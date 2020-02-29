@@ -1,0 +1,399 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Text Semantics - CS 282: Deep Learning Notes Spring 2020</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="../lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="../lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="../lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="../lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="../lectures/lec12_text_semantics.html" class="active"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li></ol></li><li class="expanded "><a href="../exam/exam.html"><strong aria-hidden="true">3.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/midterm1.html"><strong aria-hidden="true">3.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/mt1sp19.html"><strong aria-hidden="true">3.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="../exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">3.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="../exam/midterm1/cheatsheet.html"><strong aria-hidden="true">3.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">CS 282: Deep Learning Notes Spring 2020</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#text-semantics" id="text-semantics">Text Semantics</a></h1>
+<p><a href="https://youtu.be/1rzjaUp6NiQ">Webcast</a></p>
+<p><img src="https://i.imgur.com/7LIXXrJ.png" alt="" /></p>
+<ul>
+<li><strong>Propositional</strong>: logic, formal, mathematical</li>
+<li><strong>Vector</strong>: represent as numbers, high dimensional space.</li>
+</ul>
+<p><img src="https://i.imgur.com/br0ryjb.png" alt="" /></p>
+<ul>
+<li>Propositional uses class (usually noun) and predicates - operation (usually a verb). <strong>Reasoning</strong></li>
+<li>Word and sentences represented as vectors. Commutative! That is a problem.</li>
+</ul>
+<h2><a class="header" href="#vector-embedding-of-words" id="vector-embedding-of-words">Vector Embedding of Words</a></h2>
+<p><img src="https://i.imgur.com/CGwXg4v.png" alt="" /></p>
+<ul>
+<li><strong>Bag-of-Words</strong> - sentence</li>
+</ul>
+<h3><a class="header" href="#word-similarity" id="word-similarity">Word Similarity</a></h3>
+<p><img src="https://i.imgur.com/Vd6TRq8.png" alt="" /></p>
+<ul>
+<li><strong>Similar word</strong> in <strong>similar contexts</strong>. Dog and canine can be replaced.</li>
+</ul>
+<p><img src="https://i.imgur.com/Nqc0KTP.png" alt="" /></p>
+<h3><a class="header" href="#dimension-reduction" id="dimension-reduction">Dimension Reduction</a></h3>
+<p><img src="https://i.imgur.com/L54iu21.png" alt="" /></p>
+<ul>
+<li>Could <strong>one-hot encode</strong> every word in vocab. That's expensive.</li>
+<li>Alt: counts of word used in that context. &quot;Dog barks&quot;.</li>
+</ul>
+<h2><a class="header" href="#dimensionality-reduction" id="dimensionality-reduction">Dimensionality Reduction</a></h2>
+<p><img src="https://i.imgur.com/sd6BKtO.png" alt="" /></p>
+<h3><a class="header" href="#latent-semantic-analysis" id="latent-semantic-analysis">Latent Semantic Analysis</a></h3>
+<p><img src="https://i.imgur.com/YogMF8j.png" alt="" /></p>
+<ul>
+<li>Encode documents <code>N</code></li>
+<li><code>M</code> is word count.</li>
+</ul>
+<p><img src="https://i.imgur.com/hXnjAO7.png" alt="" /></p>
+<p>Counts words</p>
+<h3><a class="header" href="#latent-semantic-analysis-1" id="latent-semantic-analysis-1">Latent Semantic Analysis</a></h3>
+<p><img src="https://i.imgur.com/QEJ4hZq.png" alt="" /></p>
+<ul>
+<li>Low dimensional approximation using SVD. (Review SVD!)</li>
+<li>Embedding is V, factors encode document contexts</li>
+</ul>
+<h4><a class="header" href="#singular-value-decomposition" id="singular-value-decomposition">Singular Value Decomposition</a></h4>
+<p><img src="https://i.imgur.com/8vySkwT.png" alt="" /></p>
+<ul>
+<li>\( U, V \) <strong>orthogonal, normal</strong>. \( S \) rectangular diagonal, singular values, right padded with 0s to fit</li>
+</ul>
+<h4><a class="header" href="#review-how-to-calculate-svd" id="review-how-to-calculate-svd">Review How to Calculate SVD</a></h4>
+<p><img src="https://i.imgur.com/VHinLAL.png" alt="" /></p>
+<ul>
+<li>It can be computed from eigenvalues of \( T ~ T ^T \)</li>
+<li>Insides cancel out, there's an \( S^2 \) term!!!</li>
+</ul>
+<p><img src="https://i.imgur.com/FB3xuv1.png" alt="" /></p>
+<p>Both work!</p>
+<p><img src="https://i.imgur.com/2ynYgmd.png" alt="" /></p>
+<ul>
+<li>Can have a smaller S, using only the largest singular values (S?) </li>
+<li>Small K dimension</li>
+<li>High dimensional T to low dimensional </li>
+<li><strong>best possible reconstruction</strong> of documents from their embedding</li>
+</ul>
+<p><img src="https://i.imgur.com/mWKPVXo.png" alt="" /></p>
+<ul>
+<li>Documents are T, Encoding is Z</li>
+</ul>
+<p><img src="https://i.imgur.com/0IJVSaK.png" alt="" /></p>
+<ul>
+<li>Have a network learn SVD</li>
+<li>V is vocab times latent dimensions</li>
+<li>Scalable version of LSA/SVD</li>
+<li>similar things will get mapped to similar places</li>
+</ul>
+<h2><a class="header" href="#t-sne-word-embeddings" id="t-sne-word-embeddings">t-SNE Word Embeddings</a></h2>
+<p><img src="https://i.imgur.com/tF1VGAF.png" alt="" /></p>
+<h2><a class="header" href="#word2vec" id="word2vec">Word2Vec</a></h2>
+<p><img src="https://i.imgur.com/LmTf2z2.png" alt="" /></p>
+<ul>
+<li>neighborhood of a word instead of whole document, <strong>skip-gram</strong></li>
+<li>nonlinearity</li>
+</ul>
+<p><img src="https://i.imgur.com/GLAWU4T.png" alt="" /></p>
+<ul>
+<li>Predict center words from context</li>
+<li>order does not matter</li>
+</ul>
+<p><img src="https://i.imgur.com/ZrKymNE.png" alt="" /></p>
+<ul>
+<li>Predict context words from center word</li>
+</ul>
+<p><img src="https://i.imgur.com/9sTa45d.png" alt="" /></p>
+<ul>
+<li>Problem of SVD is it favors minimizing large distances (min squared error). Want to preserve <strong>close</strong> distance like t-SNE</li>
+</ul>
+<p><img src="https://i.imgur.com/E3M523Q.png" alt="" /></p>
+<ul>
+<li>Canny says it's a mess</li>
+</ul>
+<p><img src="https://i.imgur.com/29fFUrk.png" alt="" /></p>
+<ul>
+<li>Holds relations as vectors! Vector math!</li>
+</ul>
+<p><img src="https://i.imgur.com/0WFGMaA.png" alt="" /></p>
+<ul>
+<li>This model uses contexts</li>
+<li>City pairs, opposites, comparatives (great, greater)</li>
+</ul>
+<p>Criticisms:</p>
+<ul>
+<li>Cross-entropy emphasizes small word combinations</li>
+<li>Expensive to softmax</li>
+</ul>
+<p><img src="https://i.imgur.com/Er3Ogvq.png" alt="" /></p>
+<ul>
+<li>Maybe wrong data</li>
+</ul>
+<p><img src="https://i.imgur.com/CwVSFNj.png" alt="" /></p>
+<ul>
+<li>Now words times words! Better for contextual words!</li>
+<li>Window size (prob exam problem), just try it and check</li>
+</ul>
+<h2><a class="header" href="#glove" id="glove">GloVe</a></h2>
+<p><img src="https://i.imgur.com/OkSCRaK.png" alt="" /></p>
+<ul>
+<li>\( C_{ij} \) num times word j in context of word i. Query the matrix
+<ul>
+<li>For favoring the counts</li>
+</ul>
+</li>
+<li>\( u_i \) is embedding, \( v_j \) is context word embedding
+<ul>
+<li>Inner product for similarity!!!</li>
+</ul>
+</li>
+<li>\( f \) properties make it small for close words, and not too big for unlike words in context</li>
+</ul>
+<p><img src="https://i.imgur.com/CJ0MNrE.png" alt="" /></p>
+<h2><a class="header" href="#compositional-semantics" id="compositional-semantics">Compositional Semantics</a></h2>
+<p><img src="https://i.imgur.com/NsrUYj7.png" alt="" /></p>
+<ul>
+<li><strong>Compositional Semantics</strong> capture meaning in the structure and ordering </li>
+</ul>
+<p><img src="https://i.imgur.com/H4Iio7l.png" alt="" /></p>
+<h3><a class="header" href="#skip-through-vectors" id="skip-through-vectors">Skip-Through Vectors</a></h3>
+<p><img src="https://i.imgur.com/3TYFBkQ.png" alt="" /></p>
+<ul>
+<li>Predict the previous sentence and next sentences
+<ul>
+<li>Fed back in</li>
+</ul>
+</li>
+<li>RNN, each state </li>
+</ul>
+<p><img src="https://i.imgur.com/ozMrn5g.png" alt="" /></p>
+<ul>
+<li>Doesn't require backprop?</li>
+</ul>
+<p><img src="https://i.imgur.com/VCd42TW.png" alt="" /></p>
+<ul>
+<li>Human evaluation.</li>
+</ul>
+<p><img src="https://i.imgur.com/LS5i6O1.png" alt="" /></p>
+<ul>
+<li>Why not just train/optimize for similarity
+<ul>
+<li>Minimize Manhattan distance</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#semantic-entailment-evaluation" id="semantic-entailment-evaluation">Semantic Entailment Evaluation</a></h3>
+<p><img src="https://i.imgur.com/pHYzAi9.png" alt="" /></p>
+<ul>
+<li>Tasks are Entailment, Contradiction, Neutral</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../lectures/lec11_attention.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../exam/exam.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../lectures/lec11_attention.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../exam/exam.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

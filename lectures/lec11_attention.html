@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Attention Networks - CS 282: Deep Learning Notes Spring 2020</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="../lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="../lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="../lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="../lectures/lec11_attention.html" class="active"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="../lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li></ol></li><li class="expanded "><a href="../exam/exam.html"><strong aria-hidden="true">3.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/midterm1.html"><strong aria-hidden="true">3.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/mt1sp19.html"><strong aria-hidden="true">3.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="../exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">3.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="../exam/midterm1/cheatsheet.html"><strong aria-hidden="true">3.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">CS 282: Deep Learning Notes Spring 2020</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#attention-networks" id="attention-networks">Attention Networks</a></h1>
+<p><strong>The most important idea in deep networks this decade.</strong></p>
+<h3><a class="header" href="#pilot-analogy" id="pilot-analogy">Pilot analogy</a></h3>
+<p><img src="https://i.imgur.com/LU12T8h.jpg" alt="" /></p>
+<p>Pilots move their focus on different things, gauges, buttons, switches</p>
+<h3><a class="header" href="#papers" id="papers">Papers</a></h3>
+<p>Attention is All You Need (2017) only stacked attention, previous used RNNs</p>
+<h2><a class="header" href="#soft-vs-hard-attention-introduction" id="soft-vs-hard-attention-introduction">Soft vs Hard Attention Introduction</a></h2>
+<p><img src="https://i.imgur.com/GwTuFpG.png" alt="" /></p>
+<ul>
+<li><strong>Hard Attention</strong> is what humans do. Not differentiable because attention map is 1 where focused, 0 elsewhere (discrete).</li>
+<li><strong>Soft Attention</strong> - linear combination over inputs, can use backprop.
+<ul>
+<li>Trains network and attention to the right place!</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/3JN8VEn.png" alt="" />
+<strong>Supervised Learning</strong> vs <strong>Reinforcement Learning</strong>, maximizing a reward (discrete)</p>
+<p>Reinforcement Learning, the <strong>agent tries to maximize the sum of rewards over an epoch</strong></p>
+<h2><a class="header" href="#attention-for-recognition" id="attention-for-recognition">Attention for Recognition</a></h2>
+<p><img src="https://i.imgur.com/d2tfdX3.png" alt="" /></p>
+<p>Has time stamps. Has location and the image. RNN always predicting gaze location for next time.</p>
+<p><img src="https://i.imgur.com/BAmjvmm.png" alt="" /></p>
+<p>Resolution when focusing on something (glimpse). Output is location and action (classify/don't classify). Inputs are on top, output is at the bottom.</p>
+<p><img src="https://i.imgur.com/NnoPB1G.png" alt="" /></p>
+<p>This shows glimpses. Focused in center. Blurred around. More blurred after, 3 levels. Green is location as it moves around.</p>
+<h2><a class="header" href="#soft-attention-for-translation" id="soft-attention-for-translation">Soft Attention for Translation</a></h2>
+<p><img src="https://i.imgur.com/ode4uKw.png" alt="" /></p>
+<p>When the world is outputting <em>Me</em>, it has attention on <em>I</em>. Likewise with <em>coffee</em> and <em>cafe</em>.</p>
+<p><img src="https://i.imgur.com/bWX5rXq.png" alt="" /></p>
+<p>What word does each word correspond to? (Where is the attention located)?</p>
+<h2><a class="header" href="#rnn-for-captioning" id="rnn-for-captioning">RNN for Captioning</a></h2>
+<p><img src="https://i.imgur.com/O3QzfWP.png" alt="" /></p>
+<p>Output <code>d0</code> goes into a softmax over the vocabulary. <em>Bird</em> is fed back into <code>x1</code>, next token. </p>
+<p><img src="https://i.imgur.com/qA37EVl.png" alt="" /></p>
+<p>Have \( L \times D \) features extracted. Our RNN outputs classification and weight location. Mask/summing (?) with the features give the weighted feature \( D \) fed back into the RNN.</p>
+<h2><a class="header" href="#soft-vs-hard-attention-in-captioning" id="soft-vs-hard-attention-in-captioning">Soft vs. Hard Attention in Captioning</a></h2>
+<p><img src="https://i.imgur.com/VNdA0yR.png" alt="" /></p>
+<ul>
+<li>Have two inputs, RNN gives probability distribution (see above) (also think about the result of softmax).</li>
+<li><strong>Soft Attention</strong> sum all location and derivative is \( \frac{dz}{dp} \). Train with gradient descent.</li>
+<li><strong>Hard Attention</strong> samples only one location. With argmax, \( \frac{dz}{dp} \) is almost zero everywhere. Can't use gradient descent.</li>
+</ul>
+<p><img src="https://i.imgur.com/RphCcoj.png" alt="" /></p>
+<p>Soft is smooth around the area. Hard is discrete (1 or 0) around the image.</p>
+<p><img src="https://i.imgur.com/wLcn23X.jpg" alt="" /></p>
+<p><img src="https://i.imgur.com/YYT5G2u.jpg" alt="" /></p>
+<p>Can see where it made mistakes!!!</p>
+<h2><a class="header" href="#attention-mechanics" id="attention-mechanics">Attention Mechanics</a></h2>
+<p><img src="https://i.imgur.com/0q6PVTx.png" alt="" /></p>
+<ul>
+<li>Image Feature output matrix \( L \times D \)</li>
+<li>Attention weights output vector \( L \). Can \( L \) be an image \( H \times W \)?</li>
+<li>Do a broadcast multiply - each vector in \( D \) multiplies by the Attention vector. Output is still \( L \times D \)</li>
+<li>Sum the \( L \) axis (vector). Output is size \( D \).</li>
+</ul>
+<p><img src="https://i.imgur.com/NcPqXPf.png" alt="" /></p>
+<ul>
+<li>Need sum for the contributions. This is because \( B \) is broadcast multiplied to \( A \)</li>
+</ul>
+<h3><a class="header" href="#salience" id="salience">Salience</a></h3>
+<p><img src="https://i.imgur.com/v4cwBwH.png" alt="" /></p>
+<ul>
+<li>Circle operation is product</li>
+<li>What is salience (A *dot* )
+<ul>
+<li><strong>Salience:</strong> The total contribution and gradient to the output (the importance of an area)</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#attention-and-lstm" id="attention-and-lstm">Attention and LSTM</a></h2>
+<p><img src="https://i.imgur.com/EDcAoA5.png" alt="" /></p>
+<ul>
+<li>LSTMs also receive a <strong>salience gradient</strong>. There is multiplicative gating (kind of like attention)</li>
+</ul>
+<h2><a class="header" href="#soft-attention-for-video" id="soft-attention-for-video">Soft Attention for Video</a></h2>
+<p><img src="https://i.imgur.com/wHL1iwj.png" alt="" /></p>
+<p>Now temporal (time) can have attention. (Which frame is important?)</p>
+<p><img src="https://i.imgur.com/lo2rgUy.png" alt="" /></p>
+<ul>
+<li>Can have spatial and temporal attention. Temporal in this network.</li>
+<li>Create a vector of feature frames.</li>
+</ul>
+<p><img src="https://i.imgur.com/uvLw16A.png" alt="" /></p>
+<p><img src="https://i.imgur.com/iNBaAPT.png" alt="" /></p>
+<p>Perplexity is diversity of word options. Goal is smaller which means the model is more confident.</p>
+<h2><a class="header" href="#find-the-region-again" id="find-the-region-again">Find the Region Again</a></h2>
+<p><img src="https://i.imgur.com/gVzxWMc.png" alt="" /></p>
+<ul>
+<li>Classify - attention to regions in input</li>
+<li>Generate - draw digit</li>
+</ul>
+<p>Has a parameter for scale</p>
+<h2><a class="header" href="#takeaways" id="takeaways">Takeaways</a></h2>
+<p><img src="https://i.imgur.com/vquu8LF.png" alt="" /></p>
+<ul>
+<li><strong>Salience:</strong> Emphasize imporant data.</li>
+</ul>
+<p><img src="https://i.imgur.com/ddEkm4X.png" alt="" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../lectures/lec10_visual.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../lectures/lec12_text_semantics.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../lectures/lec10_visual.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../lectures/lec12_text_semantics.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
