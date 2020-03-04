@@ -7,7 +7,7 @@
     - [Attention Networks](lectures/lec11_attention.md)
     - [Text Semantics](lectures/lec12_text_semantics.md)
 - [Homeworks](homework/homework.md)
-    - [Homework 2 LSTM](homework/hw2_lstm.md)
+    - [Homework 2 RNN and LSTM](homework/hw2_rnn_lstm.md)
 - [Exam Practice](exam/exam.md)
     - [Midterm 1](exam/midterm1/midterm1.md)
         - [Midterm 1 Spring 2019](exam/midterm1/mt1sp19.md)
