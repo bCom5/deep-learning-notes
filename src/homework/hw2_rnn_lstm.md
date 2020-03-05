@@ -60,6 +60,21 @@ LSTM backwards
 
 ![](https://i.imgur.com/a1XejED.png)
 
+* A __saliency map__ tells us the degree to which each pixel in the image affects the classification score for that image. To compute it, we compute the gradient of the unnormalized score (?) corresponding to the correct class (which is a scalar) (why is this a scalar?) with respect to the pixels of the image.
+* If the image has shape (3, H, W) then this gradient will also have shape (3, H, W); for each pixel in the image, this gradient tells us the amount by which the classification score will change if the pixel changes by a small amount. 
+* To compute the saliency map, we take the absolute value of this gradient, then take the maximum value over the 3 input channels; the final saliency map thus has shape (H, W) and all entries are nonnegative.
+* @Brian: gradient of what? Max of what?
+
+* [Pytorch Gather](http://pytorch.org/docs/torch.html#torch.gather)
+* `s.gather(1, y.view(-1, 1)).squeeze()`
+    * turns out to be like a loss. Cross entropy `mean()`
+
+#### Fooling Network
+* `torch.Tensor.data` and `torch.Tensor.grad.data`
+* do not update `torch.Tensor += torch.Tensor` when we are returning a copy, `torch.Tensor.copy()`
+* gradient ascent `torch.Tensor += torch.Tensor` wild
+* we calculate our own loss????
+
 ## Q4: Style Transfer (20 points)
 
 ## Debugging
