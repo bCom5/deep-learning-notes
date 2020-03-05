@@ -86,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li></ol></li><li class="expanded "><a href="homework/homework.html"><strong aria-hidden="true">3.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="homework/hw2_rnn_lstm.html"><strong aria-hidden="true">3.1.</strong> Homework 2 RNN and LSTM</a></li></ol></li><li class="expanded "><a href="exam/exam.html"><strong aria-hidden="true">4.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/midterm1.html"><strong aria-hidden="true">4.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/mt1sp19.html"><strong aria-hidden="true">4.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">4.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="exam/midterm1/cheatsheet.html"><strong aria-hidden="true">4.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li></ol></li><li class="expanded "><a href="homework/homework.html"><strong aria-hidden="true">3.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="homework/hw2_rnn_lstm.html"><strong aria-hidden="true">3.1.</strong> Homework 2 RNN and LSTM</a></li></ol></li><li class="expanded "><a href="exam/exam.html"><strong aria-hidden="true">4.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/midterm1.html"><strong aria-hidden="true">4.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/mt1sp19.html"><strong aria-hidden="true">4.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">4.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="exam/midterm1/cheatsheet.html"><strong aria-hidden="true">4.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -454,6 +454,234 @@ Taught by John Canny</p>
 <p><img src="https://i.imgur.com/pHYzAi9.png" alt="" /></p>
 <ul>
 <li>Tasks are Entailment, Contradiction, Neutral</li>
+</ul>
+<h1><a class="header" href="#translation" id="translation">Translation</a></h1>
+<ul>
+<li><a href="https://briantliao.com/store/cs282-lectures-slides/lec13.pdf">Slides</a></li>
+</ul>
+<h2><a class="header" href="#review" id="review">Review</a></h2>
+<p><img src="https://i.imgur.com/ytGyXuo.png" alt="" /></p>
+<ul>
+<li>Inner Product (or is it Dot Product?) is closeness</li>
+</ul>
+<p><img src="https://i.imgur.com/E9DMaxX.png" alt="" /></p>
+<ul>
+<li>Predict previous and next sentences, now ordering is included</li>
+</ul>
+<p><img src="https://i.imgur.com/r9NLuPf.png" alt="" /></p>
+<ul>
+<li>Train for your task! This is based on closeness.</li>
+</ul>
+<h2><a class="header" href="#translation-1" id="translation-1">Translation</a></h2>
+<p><img src="https://i.imgur.com/myVDtam.png" alt="" /></p>
+<h3><a class="header" href="#sequence-to-sequence" id="sequence-to-sequence">Sequence to Sequence</a></h3>
+<ul>
+<li><strong>Sequence-To-Sequence RNN</strong>, input fed into left, output comes out of the right</li>
+</ul>
+<p><img src="https://i.imgur.com/3HwFFEZ.png" alt="" /></p>
+<ul>
+<li>At each RNN node, the output is fed back in. Keep the n-best</li>
+</ul>
+<h3><a class="header" href="#bleu" id="bleu">Bleu</a></h3>
+<p><img src="https://i.imgur.com/9G6bB4e.png" alt="" /></p>
+<ul>
+<li>Candidate is what our network gives us. References are from humans.</li>
+<li>See where it matches.</li>
+</ul>
+<p><img src="https://i.imgur.com/1lMHytF.png" alt="" /></p>
+<ul>
+<li>Unigram matching - mapping</li>
+</ul>
+<p><img src="https://i.imgur.com/j2kCRM2.png" alt="" /></p>
+<ul>
+<li>Averaged over references</li>
+</ul>
+<p><img src="https://i.imgur.com/IyG2pdL.png" alt="" /></p>
+<ul>
+<li><strong>Unigram</strong> for <strong>adequacy</strong></li>
+<li><strong>Ngram</strong> for <strong>fluency</strong>
+<ul>
+<li>Fluency is better (imo)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/j4kbkLo.png" alt="" /></p>
+<ul>
+<li>Bigram (2 word length)</li>
+</ul>
+<p><img src="https://i.imgur.com/P9iowOf.png" alt="" /></p>
+<ul>
+<li>Geometric Avg ( (( w_n log p_n \) )
+<ul>
+<li>BP: penalty shorter than r</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/4xTSym1.png" alt="" /></p>
+<ul>
+<li>Ensemble does well</li>
+</ul>
+<p><img src="https://i.imgur.com/4dQNLlc.png" alt="" /></p>
+<ul>
+<li>Try going backwards!
+<ul>
+<li>coffee love I</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/EC4HORT.png" alt="" /></p>
+<ul>
+<li>Really small BEAM search</li>
+</ul>
+<p><img src="https://i.imgur.com/tJE0USb.png" alt="" /></p>
+<ul>
+<li>Problem! There's a bottleneck for information</li>
+</ul>
+<p><img src="https://i.imgur.com/qERSjqN.png" alt="" /></p>
+<ul>
+<li>In soft-attention, Coffee is related to cafe
+<ul>
+<li>But bottlenecked!</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#soft-attention-for-translation-1" id="soft-attention-for-translation-1">Soft Attention for Translation</a></h2>
+<p><img src="https://i.imgur.com/ZETrFIt.png" alt="" /></p>
+<ul>
+<li><strong>Context vector</strong> is the sum of all weighed h, which are hidden states</li>
+<li>Weights are <strong>Mixture weights</strong>, softmax over alignment scores</li>
+<li><strong>Alignment scores</strong> input words and output words?</li>
+</ul>
+<p><img src="https://i.imgur.com/YPalgse.png" alt="" /></p>
+<ul>
+<li>Wow this is amazing</li>
+<li>Bi-directional RNN Encoder</li>
+</ul>
+<p><img src="https://i.imgur.com/Z1r7qjJ.png" alt="" /></p>
+<ul>
+<li>Decoder is a RNN, sample word fed back in, get next word out</li>
+<li>You have a <strong>Recurrent State</strong> in the <strong>Decoder RNN</strong></li>
+<li>and a <strong>Attention Vectors</strong> hidden state in the <strong>Bidirection Encoder RNN</strong></li>
+</ul>
+<p><img src="https://i.imgur.com/RFYS1Xt.png" alt="" /></p>
+<p><img src="https://i.imgur.com/nl7EEHM.png" alt="" /></p>
+<ul>
+<li>English to French, correctly picks up reversal!</li>
+</ul>
+<p><img src="https://i.imgur.com/EF8asQs.png" alt="" /></p>
+<ul>
+<li><strong>Neural Machine Translation!</strong>
+<ul>
+<li>Complicated model, what the heck</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#stanford-manning-update-attention-neural-machine-translation" id="stanford-manning-update-attention-neural-machine-translation">Stanford Manning Update Attention Neural Machine Translation</a></h3>
+<p><img src="https://i.imgur.com/LU9UKYM.png" alt="" /></p>
+<ul>
+<li>Stacked LSTM</li>
+</ul>
+<p><img src="https://i.imgur.com/GyKZ5bK.png" alt="" /></p>
+<ul>
+<li><strong>Global Attention</strong>, Attention is not Recurrent, align weights are now global</li>
+</ul>
+<p><img src="https://i.imgur.com/4AXBT7p.png" alt="" /></p>
+<ul>
+<li>Alignment (?)</li>
+</ul>
+<h3><a class="header" href="#translation-and-parsing" id="translation-and-parsing">Translation and Parsing</a></h3>
+<p><img src="https://i.imgur.com/EqGiSWf.png" alt="" /></p>
+<ul>
+<li>Can generate like nested/tree code!</li>
+</ul>
+<p><img src="https://i.imgur.com/I2NfCBU.png" alt="" /></p>
+<ul>
+<li>Build the parse tree (Nouns, parts, etc.)
+<ul>
+<li>Trees are like LISP, can be nested in parenthesis</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/u5gQqQI.png" alt="" /></p>
+<ul>
+<li>Sequence-To-Sequence Parse Tree</li>
+</ul>
+<p><img src="https://i.imgur.com/SBY9QQq.png" alt="" /></p>
+<ul>
+<li>Training, on the three-bank not well</li>
+<li>Then train on the Berkeley Parser</li>
+<li>Add attention and retrain on human data
+<ul>
+<li>It's like Model Distillation?</li>
+<li>Something about overfitting</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#attention-only-translation" id="attention-only-translation">Attention-only Translation</a></h2>
+<p><img src="https://i.imgur.com/wNITJAH.png" alt="" /></p>
+<ul>
+<li>Time grows in proportion to sentence length</li>
+<li>Long-range hard</li>
+<li>Hierarchal deeper structure hard</li>
+</ul>
+<h3><a class="header" href="#transformer" id="transformer">Transformer</a></h3>
+<p><img src="https://i.imgur.com/YJD3LBN.png" alt="" /></p>
+<ul>
+<li>Query-Key-Value</li>
+</ul>
+<p><img src="https://i.imgur.com/ki9Z54a.png" alt="" /></p>
+<ul>
+<li>Try my query to other keys</li>
+</ul>
+<p><img src="https://i.imgur.com/ctviBRe.png" alt="" /></p>
+<ul>
+<li>Score is local, Softmax x Value then Sum is global</li>
+</ul>
+<p><img src="https://i.imgur.com/079hOLX.png" alt="" /></p>
+<ul>
+<li>Input x, compute inner products with their matrices
+<ul>
+<li>\( W^V, W^K, W^Q \)</li>
+<li>Get \( V_1, K_1, Q_1 \)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/3Xd2tFj.png" alt="" /></p>
+<p><img src="https://i.imgur.com/SUfx7a8.png" alt="" /></p>
+<ul>
+<li>Q, K, V are matrices now</li>
+</ul>
+<p><img src="https://i.imgur.com/qzELmTE.png" alt="" /></p>
+<ul>
+<li><strong>Multi-Headed Attention</strong></li>
+</ul>
+<p><img src="https://i.imgur.com/14NfcZi.png" alt="" /></p>
+<ul>
+<li>multiple heads
+<ul>
+<li>recognized more difficult is coupled</li>
+<li>blue, green, red</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/sPO4eMU.png" alt="" /></p>
+<ul>
+<li><strong>Transformer Encoder</strong>
+<ul>
+<li>Encoded as a single matrix</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/jTD6Qo6.png" alt="" /></p>
+<h4><a class="header" href="#transformer-encoderdecoder" id="transformer-encoderdecoder">Transformer Encoder/Decoder</a></h4>
+<p><img src="https://i.imgur.com/IKZ7vfD.png" alt="" /></p>
+<ul>
+<li>Value Key fed in</li>
+</ul>
+<p><img src="https://i.imgur.com/wZmiJ9e.png" alt="" /></p>
+<ul>
+<li></li>
+<li></li>
 </ul>
 <h1><a class="header" href="#homeworks" id="homeworks">Homeworks</a></h1>
 <h1><a class="header" href="#homework-2-rnn-and-lstm" id="homework-2-rnn-and-lstm">Homework 2 RNN and LSTM</a></h1>
