@@ -507,6 +507,36 @@ pip3 install -r requirements.txt # @Brian changed to pip3
 <li>Which pixel has the most effect on the input</li>
 </ul>
 <p><img src="https://i.imgur.com/a1XejED.png" alt="" /></p>
+<ul>
+<li>
+<p>A <strong>saliency map</strong> tells us the degree to which each pixel in the image affects the classification score for that image. To compute it, we compute the gradient of the unnormalized score (?) corresponding to the correct class (which is a scalar) (why is this a scalar?) with respect to the pixels of the image.</p>
+</li>
+<li>
+<p>If the image has shape (3, H, W) then this gradient will also have shape (3, H, W); for each pixel in the image, this gradient tells us the amount by which the classification score will change if the pixel changes by a small amount. </p>
+</li>
+<li>
+<p>To compute the saliency map, we take the absolute value of this gradient, then take the maximum value over the 3 input channels; the final saliency map thus has shape (H, W) and all entries are nonnegative.</p>
+</li>
+<li>
+<p>@Brian: gradient of what? Max of what?</p>
+</li>
+<li>
+<p><a href="http://pytorch.org/docs/torch.html#torch.gather">Pytorch Gather</a></p>
+</li>
+<li>
+<p><code>s.gather(1, y.view(-1, 1)).squeeze()</code></p>
+<ul>
+<li>turns out to be like a loss. Cross entropy <code>mean()</code></li>
+</ul>
+</li>
+</ul>
+<h4><a class="header" href="#fooling-network" id="fooling-network">Fooling Network</a></h4>
+<ul>
+<li><code>torch.Tensor.data</code> and <code>torch.Tensor.grad.data</code></li>
+<li>do not update <code>torch.Tensor += torch.Tensor</code> when we are returning a copy, <code>torch.Tensor.copy()</code></li>
+<li>gradient ascent <code>torch.Tensor += torch.Tensor</code> wild</li>
+<li>we calculate our own loss????</li>
+</ul>
 <h2><a class="header" href="#q4-style-transfer-20-points" id="q4-style-transfer-20-points">Q4: Style Transfer (20 points)</a></h2>
 <h2><a class="header" href="#debugging" id="debugging">Debugging</a></h2>
 <p>List Conda Enviornments:</p>
