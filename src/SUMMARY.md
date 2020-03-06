@@ -7,6 +7,7 @@
     - [Attention Networks](lectures/lec11_attention.md)
     - [Text Semantics](lectures/lec12_text_semantics.md)
     - [Translation](lectures/lec13_translation.md)
+    - [Transformers and Pre-Training](lectures/lec14_transformers.md)
 - [Homeworks](homework/homework.md)
     - [Homework 2 RNN and LSTM](homework/hw2_rnn_lstm.md)
 - [Exam Practice](exam/exam.md)
