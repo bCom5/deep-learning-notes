@@ -86,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li></ol></li><li class="expanded "><a href="homework/homework.html"><strong aria-hidden="true">3.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="homework/hw2_rnn_lstm.html"><strong aria-hidden="true">3.1.</strong> Homework 2 RNN and LSTM</a></li></ol></li><li class="expanded "><a href="exam/exam.html"><strong aria-hidden="true">4.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/midterm1.html"><strong aria-hidden="true">4.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/mt1sp19.html"><strong aria-hidden="true">4.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">4.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="exam/midterm1/cheatsheet.html"><strong aria-hidden="true">4.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li></ol></li><li class="expanded "><a href="other_resources/other_resources.html"><strong aria-hidden="true">3.</strong> Other Resources</a></li><li><ol class="section"><li class="expanded "><a href="other_resources/viz_seq.html"><strong aria-hidden="true">3.1.</strong> Visualizing Seq2Seq with Attention</a></li></ol></li><li class="expanded "><a href="homework/homework.html"><strong aria-hidden="true">4.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="homework/hw2_rnn_lstm.html"><strong aria-hidden="true">4.1.</strong> Homework 2 RNN and LSTM</a></li></ol></li><li class="expanded "><a href="exam/exam.html"><strong aria-hidden="true">5.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/midterm1.html"><strong aria-hidden="true">5.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/mt1sp19.html"><strong aria-hidden="true">5.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">5.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="exam/midterm1/cheatsheet.html"><strong aria-hidden="true">5.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -828,6 +828,69 @@ Taught by John Canny</p>
 </ul>
 <h2><a class="header" href="#summary" id="summary">Summary</a></h2>
 <p><img src="https://i.imgur.com/gyL8pqy.png" alt="" /></p>
+<h1><a class="header" href="#other-resources" id="other-resources">Other Resources</a></h1>
+<h1><a class="header" href="#visualizing-seq2seq-with-attention" id="visualizing-seq2seq-with-attention">Visualizing Seq2Seq with Attention</a></h1>
+<p><a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Link</a></p>
+<h2><a class="header" href="#review-of-visual-attention" id="review-of-visual-attention">Review of Visual Attention</a></h2>
+<p><img src="https://i.imgur.com/GpIFcPF.png" alt="" /></p>
+<ul>
+<li>Have Image (top) and location <code>l_t-1</code> fed into <code>f_g</code> glimpse network.</li>
+<li>This is fed into a recurrent network <code>f_h</code></li>
+<li>The output hidden state is fed into two networks
+<ul>
+<li><code>f_a</code> activation network which does the prediction</li>
+<li><code>f_l</code> location network which predicts the next location <code>l_t</code>. In Soft Attention this is done with a saliency map.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/3lZj6UK.png" alt="" /></p>
+<ul>
+<li>The model has an <strong>encoder</strong> and <strong>decoder</strong></li>
+<li><strong>Context</strong> is transfered from the encoder to the decoder
+<ul>
+<li>Context is a vector of floats. It is a hidden state in a RNN</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/IVCpWGs.png" alt="" /></p>
+<ul>
+<li>The words are embedded as vectors using a <strong>word embedding</strong> algorithm.</li>
+</ul>
+<h3><a class="header" href="#at-attention" id="at-attention">At Attention!</a></h3>
+<ul>
+<li><strong>Attention</strong> is the idea some words are more important than others when getting the translation
+<ul>
+<li>Café to coffee</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/VviBRGt.png" alt="" /></p>
+<ul>
+<li>Instead of one hidden state, pass all the hidden states!</li>
+</ul>
+<p><img src="https://i.imgur.com/R0V8kgM.png" alt="" /></p>
+<ul>
+<li>Use the decoder hidden state to score encoder hidden states. This is  <strong>attention</strong>.</li>
+</ul>
+<p><img src="https://i.imgur.com/a012seQ.png" alt="" /></p>
+<ul>
+<li><code>h_4</code> : hidden state and <code>c_4</code> : context state are concated and the output word comes out</li>
+<li>Where does the scoring happen though?</li>
+</ul>
+<h2><a class="header" href="#from-lecture" id="from-lecture">From Lecture</a></h2>
+<p><img src="https://i.imgur.com/ZETrFIt.png" alt="" /></p>
+<ul>
+<li>In lecture, it is weighed alignment scores</li>
+<li>alignment score: \( \text{score}(\boldsymbol{s}_t, \boldsymbol{h}_i) = \mathbf{v}_a^\top \tanh(\mathbf{W}_a[\boldsymbol{s}_t; \boldsymbol{h}_i]) \)
+<ul>
+<li>\( \mathbf{v}_a \) and \( \mathbf{W}_a \) are weights that can be learned</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/RFYS1Xt.png" alt="" /></p>
+<ul>
+<li>Combine current recurrent state and all input states into attention weight (soft-attention) of input states. The attention weight adds up to 1, and is done with a softmax. </li>
+</ul>
 <h1><a class="header" href="#homeworks" id="homeworks">Homeworks</a></h1>
 <h1><a class="header" href="#homework-2-rnn-and-lstm" id="homework-2-rnn-and-lstm">Homework 2 RNN and LSTM</a></h1>
 <ul>
