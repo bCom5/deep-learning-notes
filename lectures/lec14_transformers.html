@@ -152,6 +152,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#transformers-and-pre-training" id="transformers-and-pre-training">Transformers and Pre-Training</a></h1>
+<p><a href="https://towardsdatascience.com/visual-attention-model-in-deep-learning-708813c2912c">Visual Attention</a></p>
+<p><a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Visualizing NMT</a></p>
+<p><a href="http://jalammar.github.io/illustrated-transformer/">Visualizing Transformers</a></p>
 <h2><a class="header" href="#review" id="review">Review</a></h2>
 <p><img src="https://i.imgur.com/BVdVEoi.png" alt="" /></p>
 <ul>
@@ -206,6 +209,97 @@
 <li>Attention vs Self-Attention (?)</li>
 <li>What does the direction of the arrow mean?</li>
 </ul>
+<p><img src="https://i.imgur.com/IVhfqGJ.png" alt="" /></p>
+<ul>
+<li>Green is (causal/masked) self-attention</li>
+</ul>
+<p><img src="https://i.imgur.com/NAR824z.png" alt="" /></p>
+<ul>
+<li>At training time can do in parallel</li>
+</ul>
+<p><img src="https://i.imgur.com/7byCbh7.png" alt="" /></p>
+<ul>
+<li>N-Best Transformers, k copy of your output word
+<ul>
+<li>renard with 0.3 confidence</li>
+<li>canard with 0.1 confidence</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#transformer-position-encoding" id="transformer-position-encoding">Transformer Position Encoding</a></h3>
+<p><img src="https://i.imgur.com/vfl5qkP.png" alt="" /></p>
+<ul>
+<li>The encoding doesn't have any ordering</li>
+<li>Position is a sinusoid?</li>
+</ul>
+<p><img src="https://i.imgur.com/AguYmZQ.png" alt="" /></p>
+<ul>
+<li>If your vector is even or odd
+<ul>
+<li>Learnable shifting relative displacement</li>
+<li>The inner product measures relative displacement</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/l2zCU1J.png" alt="" /></p>
+<p><img src="https://i.imgur.com/oWqORx5.png" alt="" /></p>
+<ul>
+<li>linear combination that is strongest at position (idk)</li>
+</ul>
+<h2><a class="header" href="#tokenization-challenges" id="tokenization-challenges">Tokenization Challenges</a></h2>
+<p><img src="https://i.imgur.com/zItfCEk.png" alt="" /></p>
+<ul>
+<li>new word like Starliner? can use <code>UNK</code> char</li>
+</ul>
+<p><img src="https://i.imgur.com/twmby69.png" alt="" /></p>
+<ul>
+<li>Break word down <code>##liner</code> from <code>starliner</code></li>
+</ul>
+<p><img src="https://i.imgur.com/OFg3afu.png" alt="" /></p>
+<ul>
+<li>Small vocab</li>
+<li>No <code>UNK</code> tokens</li>
+</ul>
+<p><img src="https://i.imgur.com/Qz0dYAU.png" alt="" /></p>
+<ul>
+<li>Summarization, quadratic terms</li>
+</ul>
+<p><img src="https://i.imgur.com/oauz9sr.png" alt="" /></p>
+<ul>
+<li>He mixed up M and N. Don't need <code>N^2</code> term, small <code>M^2</code> term</li>
+</ul>
+<h2><a class="header" href="#bert-bidirectional-encoder-representations-from-transformers" id="bert-bidirectional-encoder-representations-from-transformers">Bert (Bidirectional Encoder Representations from Transformers)</a></h2>
+<p><img src="https://i.imgur.com/Lkc4KuK.png" alt="" /></p>
+<ul>
+<li>Language model. Text is like a label, so it is like self labeling! Predict next word, previous word, etc.</li>
+<li>Bert is a encoder model, bi-directional</li>
+<li>GPT is a decoder model</li>
+</ul>
+<p><img src="https://i.imgur.com/oYIMVEN.png" alt="" /></p>
+<ul>
+<li>No encoder, no cross attention (?)</li>
+</ul>
+<p><img src="https://i.imgur.com/aNnUldP.png" alt="" /></p>
+<ul>
+<li>Minimize language modeling loss</li>
+</ul>
+<p><img src="https://i.imgur.com/0mgUX62.png" alt="" /></p>
+<ul>
+<li>Apply GPT to:
+<ul>
+<li>classification (what kind of speech)</li>
+<li>Entailment (a implies b, contraction, independent)</li>
+<li>Similarity has both orders</li>
+<li>Multiple Choice, run it multiple times!</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/qVblTh7.png" alt="" /></p>
+<ul>
+<li>More data, larger models keep getting better on performance!</li>
+</ul>
+<h2><a class="header" href="#summary" id="summary">Summary</a></h2>
+<p><img src="https://i.imgur.com/gyL8pqy.png" alt="" /></p>
 
                     </main>
 
