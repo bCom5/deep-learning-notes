@@ -10,6 +10,7 @@
     - [Transformers and Pre-Training](lectures/lec14_transformers.md)
 - [Other Resources](other_resources/other_resources.md)
     - [Visualizing Seq2Seq with Attention](other_resources/viz_seq.md)
+    - [Visualizing Transformers](other_resources/viz_transformers.md)
 - [Homeworks](homework/homework.md)
     - [Homework 2 RNN and LSTM](homework/hw2_rnn_lstm.md)
 - [Exam Practice](exam/exam.md)
