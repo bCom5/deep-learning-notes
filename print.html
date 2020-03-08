@@ -86,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li></ol></li><li class="expanded "><a href="other_resources/other_resources.html"><strong aria-hidden="true">3.</strong> Other Resources</a></li><li><ol class="section"><li class="expanded "><a href="other_resources/viz_seq.html"><strong aria-hidden="true">3.1.</strong> Visualizing Seq2Seq with Attention</a></li></ol></li><li class="expanded "><a href="homework/homework.html"><strong aria-hidden="true">4.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="homework/hw2_rnn_lstm.html"><strong aria-hidden="true">4.1.</strong> Homework 2 RNN and LSTM</a></li></ol></li><li class="expanded "><a href="exam/exam.html"><strong aria-hidden="true">5.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/midterm1.html"><strong aria-hidden="true">5.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/mt1sp19.html"><strong aria-hidden="true">5.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">5.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="exam/midterm1/cheatsheet.html"><strong aria-hidden="true">5.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li></ol></li><li class="expanded "><a href="other_resources/other_resources.html"><strong aria-hidden="true">3.</strong> Other Resources</a></li><li><ol class="section"><li class="expanded "><a href="other_resources/viz_seq.html"><strong aria-hidden="true">3.1.</strong> Visualizing Seq2Seq with Attention</a></li><li class="expanded "><a href="other_resources/viz_transformers.html"><strong aria-hidden="true">3.2.</strong> Visualizing Transformers</a></li></ol></li><li class="expanded "><a href="homework/homework.html"><strong aria-hidden="true">4.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="homework/hw2_rnn_lstm.html"><strong aria-hidden="true">4.1.</strong> Homework 2 RNN and LSTM</a></li></ol></li><li class="expanded "><a href="exam/exam.html"><strong aria-hidden="true">5.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/midterm1.html"><strong aria-hidden="true">5.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="exam/midterm1/mt1sp19.html"><strong aria-hidden="true">5.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">5.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="exam/midterm1/cheatsheet.html"><strong aria-hidden="true">5.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -890,6 +890,139 @@ Taught by John Canny</p>
 <p><img src="https://i.imgur.com/RFYS1Xt.png" alt="" /></p>
 <ul>
 <li>Combine current recurrent state and all input states into attention weight (soft-attention) of input states. The attention weight adds up to 1, and is done with a softmax. </li>
+</ul>
+<h1><a class="header" href="#visualizing-transformers" id="visualizing-transformers">Visualizing Transformers</a></h1>
+<p><a href="http://jalammar.github.io/illustrated-transformer/">Link</a></p>
+<h2><a class="header" href="#high-level" id="high-level">High Level</a></h2>
+<p><img src="https://i.imgur.com/EjK8hNc.png" alt="" /></p>
+<ul>
+<li>In the transformer black box we have an <strong>encoder</strong> and <strong>decoder</strong></li>
+</ul>
+<p><img src="https://i.imgur.com/DN6ElwE.png" alt="" /></p>
+<ul>
+<li>The encoders are stacked on top of each other.</li>
+</ul>
+<h3><a class="header" href="#encoders" id="encoders">Encoders</a></h3>
+<p><img src="https://i.imgur.com/NZ8mlKa.png" alt="" /></p>
+<ul>
+<li>The encoder block is made of a <strong>self-attention</strong> layer and <strong>feed-forward network</strong>
+<ul>
+<li>self-attention helps the encoder look at words in the input sentence as it encodes a specific word</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/7W5GDqK.png" alt="" /></p>
+<ul>
+<li>In NLP, each word is embedded as a vector</li>
+<li>list of word vectors is a tensor</li>
+</ul>
+<p><img src="https://i.imgur.com/E6136r3.png" alt="" /></p>
+<p><img src="https://i.imgur.com/8jThN0h.png" alt="" /></p>
+<h3><a class="header" href="#self-attention" id="self-attention">Self-Attention</a></h3>
+<ul>
+<li>The feed-forward layer is actually one network that is reused by each \( Z_i \) encoded vector. That is like a convolution</li>
+</ul>
+<p><img src="https://i.imgur.com/Vqn2VSb.png" alt="" /></p>
+<ul>
+<li>Say you have the sentence &quot;The animal didn't cross the street because it was too tired.&quot; What does <strong>it</strong> refer to? In this case, &quot;The animal.&quot; A self-attention layer lets the network learn this representation.</li>
+</ul>
+<p><img src="https://i.imgur.com/unpaPfS.png" alt="" /></p>
+<ul>
+<li>We have the embedded words (green \( X_i \))</li>
+<li>For each word, we want to get out a <strong>queries</strong> vector, a <strong>keys</strong> vector, and a <strong>values</strong> vector. We have learnable weights \( W^Q \), \( W^K \), and \( W^V \).</li>
+<li>The matrix multiplication of the green embedded word and the queries matrix, keys matrix, and values matrix create the queries vector, keys vector, and values vector for each word.</li>
+</ul>
+<p><img src="https://i.imgur.com/jsas4BF.png" alt="" /></p>
+<ul>
+<li>For each word, we calculate a score using the queries vector and keys vector.</li>
+</ul>
+<p><img src="https://i.imgur.com/LpzehcO.png" alt="" /></p>
+<ul>
+<li>We divide by 8 (sqrt of dim of keys vector for stable gradients) and take the softmax over all words (in a batch? in the corpus?)
+<ul>
+<li>(self-attention seems to be over a batch)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/o2gTn7S.png" alt="" /></p>
+<ul>
+<li>We multiply the softmax by the value and sum up all the weighted value vector \( V_i \)
+<ul>
+<li>(Does this mean all \( Z_i \) are equal though?)</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#self-attention-as-matrices" id="self-attention-as-matrices">Self-Attention as Matrices</a></h3>
+<p><img src="https://i.imgur.com/CmSRI5r.png" alt="" /></p>
+<ul>
+<li>Batch of two words, embedded in a vector of size 2.</li>
+<li>(Each weight matrix is the same size though?)</li>
+</ul>
+<p><img src="https://i.imgur.com/eVmtrMH.png" alt="" /></p>
+<ul>
+<li>Q, K, and V are calculated from X (They are NOT the weight matrices!)</li>
+<li>Their operation can be condensed into one formula</li>
+</ul>
+<h3><a class="header" href="#multi-head-attention" id="multi-head-attention">Multi-head Attention</a></h3>
+<p><img src="https://i.imgur.com/63q1zFr.png" alt="" /></p>
+<ul>
+<li>Instead of just using one Q, K, and V weight we can use multiple!</li>
+<li>This is like multiple filters in a convolution.</li>
+</ul>
+<p><img src="https://i.imgur.com/vaVBv2C.png" alt="" /></p>
+<ul>
+<li>To combine the multiple heads into a single head for the feed-forward network, we can concat all the heads \( Z_i \) and multiply it by a weight matrix \( W^O \)</li>
+</ul>
+<p><img src="https://i.imgur.com/vyxHEn7.png" alt="" /></p>
+<ul>
+<li>Each step shown together
+<ul>
+<li>The input to self-attention does not have to be a batch of words (green matrix \( X \)) but it can be the output of an encoder below (blue matrix \( R \)). Encoders are stacked.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/7RDKhZK.png" alt="" /></p>
+<ul>
+<li>At the top is a bunch of colors. They represent heads. The blue head for the word &quot;it_&quot; has attention at &quot;street&quot;, &quot;'<em>&quot;, and &quot;because&quot;. The green head has attention at &quot;tire&quot;, &quot;d</em>&quot;, and &quot;was_&quot;.</li>
+</ul>
+<h3><a class="header" href="#positional-encoding" id="positional-encoding">Positional Encoding</a></h3>
+<p><img src="https://i.imgur.com/6nL9QBu.png" alt="" /></p>
+<ul>
+<li>To encode position, we add positional encoding with our embedded word vectors</li>
+</ul>
+<p><img src="https://i.imgur.com/KJy5mug.png" alt="" /></p>
+<ul>
+<li>The encoding is done with sin and cosine. Not much detail is added (@TODO go back to this in the lecture)</li>
+</ul>
+<h3><a class="header" href="#residuals-in-the-encoder" id="residuals-in-the-encoder">Residuals in the Encoder</a></h3>
+<p><img src="https://i.imgur.com/ObpOAHt.png" alt="" /></p>
+<ul>
+<li>Like ResNet, Residuals are useful in Transformers.</li>
+</ul>
+<p><img src="https://i.imgur.com/856SQJe.png" alt="" /></p>
+<ul>
+<li>The pre-attention vectors and post-attention vectors are added together and normalized like batch norm</li>
+</ul>
+<h2><a class="header" href="#decoder" id="decoder">Decoder</a></h2>
+<p><img src="https://i.imgur.com/ZttEnYU.png" alt="" /></p>
+<ul>
+<li>The output vectors of the encoder are transformed into Key and Value matrices (not weights?) in the Decoder sequence</li>
+<li>The Decoder has to create it's own Queries matrix</li>
+<li>They are used by each Decoder (why?)</li>
+</ul>
+<p><img src="https://i.imgur.com/4O6WuNr.png" alt="" /></p>
+<ul>
+<li>The previous input is fed into the decoder. The positional encoding is added again to this output</li>
+</ul>
+<p><img src="https://i.imgur.com/51kvlQj.png" alt="" /></p>
+<ul>
+<li>The output embedded vector is matrix mutliplied to the vocab_size. It goes through a softmax, where the large index is the chosen word.</li>
+</ul>
+<h2><a class="header" href="#training" id="training">Training</a></h2>
+<p><img src="https://i.imgur.com/vlzyFKr.png" alt="" /></p>
+<ul>
+<li>The data is matrix of batch size times one hot encoding and the true value is the same.</li>
+<li>In training we can keep the top k best predictions at each word. And feed best next words into the decoder. This is <strong>beam search</strong></li>
 </ul>
 <h1><a class="header" href="#homeworks" id="homeworks">Homeworks</a></h1>
 <h1><a class="header" href="#homework-2-rnn-and-lstm" id="homework-2-rnn-and-lstm">Homework 2 RNN and LSTM</a></h1>

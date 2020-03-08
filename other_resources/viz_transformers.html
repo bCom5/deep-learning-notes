@@ -1,0 +1,355 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Visualizing Transformers - CS 282: Deep Learning Notes Spring 2020</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="../lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="../lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="../lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="../lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="../lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="../lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="../lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li></ol></li><li class="expanded "><a href="../other_resources/other_resources.html"><strong aria-hidden="true">3.</strong> Other Resources</a></li><li><ol class="section"><li class="expanded "><a href="../other_resources/viz_seq.html"><strong aria-hidden="true">3.1.</strong> Visualizing Seq2Seq with Attention</a></li><li class="expanded "><a href="../other_resources/viz_transformers.html" class="active"><strong aria-hidden="true">3.2.</strong> Visualizing Transformers</a></li></ol></li><li class="expanded "><a href="../homework/homework.html"><strong aria-hidden="true">4.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="../homework/hw2_rnn_lstm.html"><strong aria-hidden="true">4.1.</strong> Homework 2 RNN and LSTM</a></li></ol></li><li class="expanded "><a href="../exam/exam.html"><strong aria-hidden="true">5.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/midterm1.html"><strong aria-hidden="true">5.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/mt1sp19.html"><strong aria-hidden="true">5.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="../exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">5.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="../exam/midterm1/cheatsheet.html"><strong aria-hidden="true">5.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">CS 282: Deep Learning Notes Spring 2020</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#visualizing-transformers" id="visualizing-transformers">Visualizing Transformers</a></h1>
+<p><a href="http://jalammar.github.io/illustrated-transformer/">Link</a></p>
+<h2><a class="header" href="#high-level" id="high-level">High Level</a></h2>
+<p><img src="https://i.imgur.com/EjK8hNc.png" alt="" /></p>
+<ul>
+<li>In the transformer black box we have an <strong>encoder</strong> and <strong>decoder</strong></li>
+</ul>
+<p><img src="https://i.imgur.com/DN6ElwE.png" alt="" /></p>
+<ul>
+<li>The encoders are stacked on top of each other.</li>
+</ul>
+<h3><a class="header" href="#encoders" id="encoders">Encoders</a></h3>
+<p><img src="https://i.imgur.com/NZ8mlKa.png" alt="" /></p>
+<ul>
+<li>The encoder block is made of a <strong>self-attention</strong> layer and <strong>feed-forward network</strong>
+<ul>
+<li>self-attention helps the encoder look at words in the input sentence as it encodes a specific word</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/7W5GDqK.png" alt="" /></p>
+<ul>
+<li>In NLP, each word is embedded as a vector</li>
+<li>list of word vectors is a tensor</li>
+</ul>
+<p><img src="https://i.imgur.com/E6136r3.png" alt="" /></p>
+<p><img src="https://i.imgur.com/8jThN0h.png" alt="" /></p>
+<h3><a class="header" href="#self-attention" id="self-attention">Self-Attention</a></h3>
+<ul>
+<li>The feed-forward layer is actually one network that is reused by each \( Z_i \) encoded vector. That is like a convolution</li>
+</ul>
+<p><img src="https://i.imgur.com/Vqn2VSb.png" alt="" /></p>
+<ul>
+<li>Say you have the sentence &quot;The animal didn't cross the street because it was too tired.&quot; What does <strong>it</strong> refer to? In this case, &quot;The animal.&quot; A self-attention layer lets the network learn this representation.</li>
+</ul>
+<p><img src="https://i.imgur.com/unpaPfS.png" alt="" /></p>
+<ul>
+<li>We have the embedded words (green \( X_i \))</li>
+<li>For each word, we want to get out a <strong>queries</strong> vector, a <strong>keys</strong> vector, and a <strong>values</strong> vector. We have learnable weights \( W^Q \), \( W^K \), and \( W^V \).</li>
+<li>The matrix multiplication of the green embedded word and the queries matrix, keys matrix, and values matrix create the queries vector, keys vector, and values vector for each word.</li>
+</ul>
+<p><img src="https://i.imgur.com/jsas4BF.png" alt="" /></p>
+<ul>
+<li>For each word, we calculate a score using the queries vector and keys vector.</li>
+</ul>
+<p><img src="https://i.imgur.com/LpzehcO.png" alt="" /></p>
+<ul>
+<li>We divide by 8 (sqrt of dim of keys vector for stable gradients) and take the softmax over all words (in a batch? in the corpus?)
+<ul>
+<li>(self-attention seems to be over a batch)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/o2gTn7S.png" alt="" /></p>
+<ul>
+<li>We multiply the softmax by the value and sum up all the weighted value vector \( V_i \)
+<ul>
+<li>(Does this mean all \( Z_i \) are equal though?)</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#self-attention-as-matrices" id="self-attention-as-matrices">Self-Attention as Matrices</a></h3>
+<p><img src="https://i.imgur.com/CmSRI5r.png" alt="" /></p>
+<ul>
+<li>Batch of two words, embedded in a vector of size 2.</li>
+<li>(Each weight matrix is the same size though?)</li>
+</ul>
+<p><img src="https://i.imgur.com/eVmtrMH.png" alt="" /></p>
+<ul>
+<li>Q, K, and V are calculated from X (They are NOT the weight matrices!)</li>
+<li>Their operation can be condensed into one formula</li>
+</ul>
+<h3><a class="header" href="#multi-head-attention" id="multi-head-attention">Multi-head Attention</a></h3>
+<p><img src="https://i.imgur.com/63q1zFr.png" alt="" /></p>
+<ul>
+<li>Instead of just using one Q, K, and V weight we can use multiple!</li>
+<li>This is like multiple filters in a convolution.</li>
+</ul>
+<p><img src="https://i.imgur.com/vaVBv2C.png" alt="" /></p>
+<ul>
+<li>To combine the multiple heads into a single head for the feed-forward network, we can concat all the heads \( Z_i \) and multiply it by a weight matrix \( W^O \)</li>
+</ul>
+<p><img src="https://i.imgur.com/vyxHEn7.png" alt="" /></p>
+<ul>
+<li>Each step shown together
+<ul>
+<li>The input to self-attention does not have to be a batch of words (green matrix \( X \)) but it can be the output of an encoder below (blue matrix \( R \)). Encoders are stacked.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/7RDKhZK.png" alt="" /></p>
+<ul>
+<li>At the top is a bunch of colors. They represent heads. The blue head for the word &quot;it_&quot; has attention at &quot;street&quot;, &quot;'<em>&quot;, and &quot;because&quot;. The green head has attention at &quot;tire&quot;, &quot;d</em>&quot;, and &quot;was_&quot;.</li>
+</ul>
+<h3><a class="header" href="#positional-encoding" id="positional-encoding">Positional Encoding</a></h3>
+<p><img src="https://i.imgur.com/6nL9QBu.png" alt="" /></p>
+<ul>
+<li>To encode position, we add positional encoding with our embedded word vectors</li>
+</ul>
+<p><img src="https://i.imgur.com/KJy5mug.png" alt="" /></p>
+<ul>
+<li>The encoding is done with sin and cosine. Not much detail is added (@TODO go back to this in the lecture)</li>
+</ul>
+<h3><a class="header" href="#residuals-in-the-encoder" id="residuals-in-the-encoder">Residuals in the Encoder</a></h3>
+<p><img src="https://i.imgur.com/ObpOAHt.png" alt="" /></p>
+<ul>
+<li>Like ResNet, Residuals are useful in Transformers.</li>
+</ul>
+<p><img src="https://i.imgur.com/856SQJe.png" alt="" /></p>
+<ul>
+<li>The pre-attention vectors and post-attention vectors are added together and normalized like batch norm</li>
+</ul>
+<h2><a class="header" href="#decoder" id="decoder">Decoder</a></h2>
+<p><img src="https://i.imgur.com/ZttEnYU.png" alt="" /></p>
+<ul>
+<li>The output vectors of the encoder are transformed into Key and Value matrices (not weights?) in the Decoder sequence</li>
+<li>The Decoder has to create it's own Queries matrix</li>
+<li>They are used by each Decoder (why?)</li>
+</ul>
+<p><img src="https://i.imgur.com/4O6WuNr.png" alt="" /></p>
+<ul>
+<li>The previous input is fed into the decoder. The positional encoding is added again to this output</li>
+</ul>
+<p><img src="https://i.imgur.com/51kvlQj.png" alt="" /></p>
+<ul>
+<li>The output embedded vector is matrix mutliplied to the vocab_size. It goes through a softmax, where the large index is the chosen word.</li>
+</ul>
+<h2><a class="header" href="#training" id="training">Training</a></h2>
+<p><img src="https://i.imgur.com/vlzyFKr.png" alt="" /></p>
+<ul>
+<li>The data is matrix of batch size times one hot encoding and the true value is the same.</li>
+<li>In training we can keep the top k best predictions at each word. And feed best next words into the decoder. This is <strong>beam search</strong></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../other_resources/viz_seq.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../homework/homework.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../other_resources/viz_seq.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../homework/homework.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
