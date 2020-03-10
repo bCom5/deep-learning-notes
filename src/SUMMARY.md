@@ -15,6 +15,8 @@
 - [Homeworks](homework/homework.md)
     - [Homework 2 RNN and LSTM](homework/hw2_rnn_lstm.md)
     - [Homework 3 Natural Language Processing](homework/hw3_nlp.md)
+- [Final Project: Model Distillation Low Precision Neural Networks](project/project.md)
+    - [XNOR-net](project/xnor-net.md)
 - [Exam Practice](exam/exam.md)
     - [Midterm 1](exam/midterm1/midterm1.md)
         - [Midterm 1 Spring 2019](exam/midterm1/mt1sp19.md)
