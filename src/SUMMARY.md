@@ -8,6 +8,7 @@
     - [Text Semantics](lectures/lec12_text_semantics.md)
     - [Translation](lectures/lec13_translation.md)
     - [Transformers and Pre-Training](lectures/lec14_transformers.md)
+    - [NLP Applications](lectures/lec15_nlp_applications.md)
 - [Other Resources](other_resources/other_resources.md)
     - [Visualizing Seq2Seq with Attention](other_resources/viz_seq.md)
     - [Visualizing Transformers](other_resources/viz_transformers.md)
