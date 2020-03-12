@@ -1066,6 +1066,85 @@ Taught by John Canny</p>
 <p><img src="https://i.imgur.com/3q6PAJ5.png" alt="" /></p>
 <ul>
 <li>LMAO I'm confused plz help</li>
+<li>Expected value: Integral</li>
+<li>repraram the network with epsilon noise</li>
+<li>the final equation is like SGD?
+<ul>
+<li>I think they meant it's like sampling </li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/VdhyTvM.png" alt="" /></p>
+<ul>
+<li>We can approximate things</li>
+</ul>
+<p><img src="https://i.imgur.com/I9m3zRo.png" alt="" /></p>
+<ul>
+<li>Let's be honest this is black magic at this point.
+<ul>
+<li>High variance from samples?</li>
+<li>sample from equiv distributions instead</li>
+<li>Wait this actually makes sense</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/d1vWYxe.png" alt="" /></p>
+<p><img src="https://i.imgur.com/HsV8Cey.png" alt="" /></p>
+<ul>
+<li>Can kind of generate faces</li>
+</ul>
+<h2><a class="header" href="#autoregressive-models" id="autoregressive-models">Autoregressive Models</a></h2>
+<p><img src="https://i.imgur.com/GuEsiT8.png" alt="" /></p>
+<ul>
+<li>Pixels are correlated</li>
+<li>\( p(x_i | x_{i-1}, x_{i-2}, ...) \) conditioned on previous inputs</li>
+</ul>
+<p><img src="https://i.imgur.com/vtmFje2.png" alt="" /></p>
+<p><img src="https://i.imgur.com/1MrQGev.png" alt="" /></p>
+<ul>
+<li>CNN is an empty image</li>
+</ul>
+<p><img src="https://i.imgur.com/tYVH9Ia.png" alt="" /></p>
+<ul>
+<li>and feed it back in</li>
+</ul>
+<p><img src="https://i.imgur.com/jg7dJ2K.png" alt="" /></p>
+<ul>
+<li>slow generation, fast training! it can be done in parallel!</li>
+</ul>
+<p><img src="https://i.imgur.com/E0U6ytC.png" alt="" /></p>
+<ul>
+<li>Use LSTM from row above, therefore can generate row in parallel!</li>
+</ul>
+<p><img src="https://i.imgur.com/E0U6ytC.png" alt="" /></p>
+<ul>
+<li>bam!</li>
+</ul>
+<p><img src="https://i.imgur.com/adhQ1Xj.png" alt="" /></p>
+<ul>
+<li>You can use previous rows, or all seen before!</li>
+</ul>
+<h3><a class="header" href="#examples" id="examples">Examples</a></h3>
+<p><img src="https://i.imgur.com/6TbDfEO.jpg" alt="" /></p>
+<ul>
+<li>Good but with distortions</li>
+</ul>
+<p><img src="https://i.imgur.com/RbhuYF5.jpg" alt="" /></p>
+<ul>
+<li>Ok</li>
+</ul>
+<h2><a class="header" href="#image-transformer" id="image-transformer">Image Transformer</a></h2>
+<p><img src="https://i.imgur.com/WJOARPJ.png" alt="" /></p>
+<ul>
+<li>Like generating text
+<ul>
+<li>multi-head attention</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/f5LrKTS.png" alt="" /></p>
+<ul>
+<li>2D Memory Block, left is a transformer</li>
 </ul>
 <h1><a class="header" href="#other-resources" id="other-resources">Other Resources</a></h1>
 <h1><a class="header" href="#visualizing-seq2seq-with-attention" id="visualizing-seq2seq-with-attention">Visualizing Seq2Seq with Attention</a></h1>
