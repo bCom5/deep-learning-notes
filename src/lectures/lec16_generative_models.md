@@ -83,8 +83,81 @@
 
 * 
 
-
-
 ![](https://i.imgur.com/3q6PAJ5.png)
 
 * LMAO I'm confused plz help
+* Expected value: Integral
+* repraram the network with epsilon noise
+* the final equation is like SGD?
+    * I think they meant it's like sampling 
+
+![](https://i.imgur.com/VdhyTvM.png)
+
+* We can approximate things
+
+![](https://i.imgur.com/I9m3zRo.png)
+
+* Let's be honest this is black magic at this point.
+    * High variance from samples?
+    * sample from equiv distributions instead
+    * Wait this actually makes sense
+
+![](https://i.imgur.com/d1vWYxe.png)
+
+![](https://i.imgur.com/HsV8Cey.png)
+
+* Can kind of generate faces
+
+## Autoregressive Models
+
+![](https://i.imgur.com/GuEsiT8.png)
+
+* Pixels are correlated
+* \\( p(x_i | x_{i-1}, x_{i-2}, ...) \\) conditioned on previous inputs
+
+![](https://i.imgur.com/vtmFje2.png)
+
+![](https://i.imgur.com/1MrQGev.png)
+
+* CNN is an empty image
+
+![](https://i.imgur.com/tYVH9Ia.png)
+
+* and feed it back in
+
+![](https://i.imgur.com/jg7dJ2K.png)
+
+* slow generation, fast training! it can be done in parallel!
+
+![](https://i.imgur.com/E0U6ytC.png)
+
+* Use LSTM from row above, therefore can generate row in parallel!
+
+![](https://i.imgur.com/E0U6ytC.png)
+
+* bam!
+
+![](https://i.imgur.com/adhQ1Xj.png)
+
+* You can use previous rows, or all seen before!
+
+### Examples
+
+![](https://i.imgur.com/6TbDfEO.jpg)
+
+* Good but with distortions
+
+![](https://i.imgur.com/RbhuYF5.jpg)
+
+* Ok
+
+## Image Transformer
+
+![](https://i.imgur.com/WJOARPJ.png)
+
+* Like generating text
+    * multi-head attention
+
+![](https://i.imgur.com/f5LrKTS.png)
+
+* 2D Memory Block, left is a transformer
