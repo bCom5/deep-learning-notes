@@ -10,6 +10,7 @@
     - [Transformers and Pre-Training](lectures/lec14_transformers.md)
     - [NLP Applications](lectures/lec15_nlp_applications.md)
     - [Generative Models](lectures/lec16_generative_models.md)
+    - [Generative Adversarial Networks](lectures/lec17_gan.md)
 - [Other Resources](other_resources/other_resources.md)
     - [Visualizing Seq2Seq with Attention](other_resources/viz_seq.md)
     - [Visualizing Transformers](other_resources/viz_transformers.md)
