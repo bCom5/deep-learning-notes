@@ -19,6 +19,8 @@
 - [Homeworks](homework/homework.md)
     - [Homework 2 RNN and LSTM](homework/hw2_rnn_lstm.md)
     - [Homework 3 Natural Language Processing](homework/hw3_nlp.md)
+- [Section](section/section.md)
+    - [Section 7: Fooling Networks and Generative Models](section/sect7.md)
 - [Final Project: Model Distillation Low Precision Neural Networks](project/project.md)
     - [XNOR-net](project/xnor-net.md)
     - [Knowledge Distillation](project/knowledge_distill.md)
@@ -29,3 +31,4 @@
         - [Midterm 1 Spring 2019](exam/midterm1/mt1sp19.md)
         - [Midterm 1 Practice 1 Spring 2018](exam/midterm1/mt1prac1sp18.md)
         - [Midterm 1 Cheat Sheet](exam/midterm1/cheatsheet.md)
+    - [Take Home Quiz 1](exam/quiz1/quiz1.md)
