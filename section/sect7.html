@@ -1,0 +1,364 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Section 7: Fooling Networks and Generative Models - CS 282: Deep Learning Notes Spring 2020</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="../lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="../lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="../lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="../lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="../lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="../lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="../lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li><li class="expanded "><a href="../lectures/lec15_nlp_applications.html"><strong aria-hidden="true">2.7.</strong> NLP Applications</a></li><li class="expanded "><a href="../lectures/lec16_generative_models.html"><strong aria-hidden="true">2.8.</strong> Generative Models</a></li><li class="expanded "><a href="../lectures/lec17_gan.html"><strong aria-hidden="true">2.9.</strong> Generative Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec18_adversarial_networks.html"><strong aria-hidden="true">2.10.</strong> Adversarial Networks</a></li></ol></li><li class="expanded "><a href="../other_resources/other_resources.html"><strong aria-hidden="true">3.</strong> Other Resources</a></li><li><ol class="section"><li class="expanded "><a href="../other_resources/viz_seq.html"><strong aria-hidden="true">3.1.</strong> Visualizing Seq2Seq with Attention</a></li><li class="expanded "><a href="../other_resources/viz_transformers.html"><strong aria-hidden="true">3.2.</strong> Visualizing Transformers</a></li><li class="expanded "><a href="../other_resources/viz_bert_elmo_gpt.html"><strong aria-hidden="true">3.3.</strong> Visualizing BERT, ELMo, and GPT</a></li></ol></li><li class="expanded "><a href="../homework/homework.html"><strong aria-hidden="true">4.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="../homework/hw2_rnn_lstm.html"><strong aria-hidden="true">4.1.</strong> Homework 2 RNN and LSTM</a></li><li class="expanded "><a href="../homework/hw3_nlp.html"><strong aria-hidden="true">4.2.</strong> Homework 3 Natural Language Processing</a></li></ol></li><li class="expanded "><a href="../section/section.html"><strong aria-hidden="true">5.</strong> Section</a></li><li><ol class="section"><li class="expanded "><a href="../section/sect7.html" class="active"><strong aria-hidden="true">5.1.</strong> Section 7: Fooling Networks and Generative Models</a></li></ol></li><li class="expanded "><a href="../project/project.html"><strong aria-hidden="true">6.</strong> Final Project: Model Distillation Low Precision Neural Networks</a></li><li><ol class="section"><li class="expanded "><a href="../project/xnor-net.html"><strong aria-hidden="true">6.1.</strong> XNOR-net</a></li><li class="expanded "><a href="../project/knowledge_distill.html"><strong aria-hidden="true">6.2.</strong> Knowledge Distillation</a></li><li class="expanded "><a href="../project/dorefa_net.html"><strong aria-hidden="true">6.3.</strong> DoReFa-Net</a></li><li class="expanded "><a href="../project/apprentice_knowledge_distill.html"><strong aria-hidden="true">6.4.</strong> Apprentice: Knowledge Distillation with Low-Precision Networks</a></li></ol></li><li class="expanded "><a href="../exam/exam.html"><strong aria-hidden="true">7.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/midterm1.html"><strong aria-hidden="true">7.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/mt1sp19.html"><strong aria-hidden="true">7.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="../exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">7.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="../exam/midterm1/cheatsheet.html"><strong aria-hidden="true">7.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li><li class="expanded "><a href="../exam/quiz1/quiz1.html"><strong aria-hidden="true">7.2.</strong> Take Home Quiz 1</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">CS 282: Deep Learning Notes Spring 2020</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#section-7-fooling-networks-and-generative-models" id="section-7-fooling-networks-and-generative-models">Section 7: Fooling Networks and Generative Models</a></h1>
+<h2><a class="header" href="#deep-generative-model" id="deep-generative-model">Deep Generative Model</a></h2>
+<ul>
+<li>What is a deep generative model?
+<ul>
+<li>They represent the <strong>full joint distribution</strong> \( p(x, y) \) where \( x \) is an input sample and \( y \) is an output or label</li>
+<li>Review: <code>what is x (input sample)</code>?</li>
+</ul>
+</li>
+<li>What types of deep generative models are there?
+<ul>
+<li>PixelRNN/PixelCNN (autogrgressive models), Variational Autoencoders (VAEe) and Generative Adversarial Networks (GANs)</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#autoregressive-models" id="autoregressive-models">Autoregressive Models</a></h2>
+<ul>
+<li>What is an <strong>autoregressive model</strong>?
+<ul>
+<li>a model that generates an image one pixel at a time</li>
+<li>The probability of an image \( x\) is $$ p(x)=p(x_1,...,x_{n^2})=\prod_{i=1}^{n^2}p(x_i | x_1, ..., x_{i - 1}) $$ 
+<ul>
+<li>joint probability of all pixels, each pixel is the conditional probability of all past pixels</li>
+</ul>
+</li>
+<li>We model \( p(x_i | x_1, ..., x_{i - 1}) \) with a neural network \( f_\theta \)</li>
+<li>Review: <code>how do we train f_theta</code></li>
+</ul>
+</li>
+<li>What is PixelCNN?
+<ul>
+<li>Uses a CNN to model the probability of a pixel given previous pixels.</li>
+</ul>
+</li>
+<li>What are tradeoffs of PixelCNN?
+<ul>
+<li>It is slow at generating images. It has to go through each pixel, single pass through the image.</li>
+<li>It is fast to train. It only has to go through a single pass through the image</li>
+<li>Review: <code>PixelCNN</code></li>
+</ul>
+</li>
+<li>What is PixelRNN?
+<ul>
+<li>Uses a RNN (LSTM) to model the probability of a pixel given previous pixels</li>
+<li>Remembers distant pixels</li>
+</ul>
+</li>
+<li>Tradeoffs of PixelRNN?
+<ul>
+<li>It is fast at generating images, can generate full rows in parallel</li>
+<li>It is slow at training, each row has a hidden state (?)</li>
+<li>Review: <code>PixelRNN</code></li>
+</ul>
+</li>
+<li>What are the labels?
+<ul>
+<li>The image of a class is given. Try to predict the next pixel</li>
+</ul>
+</li>
+<li>What is a Image Transformer?
+<ul>
+<li>Like PixelCNN but uses a <strong>multi-headed attention network</strong></li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#variational-autoencoders" id="variational-autoencoders">Variational Autoencoders</a></h2>
+<ul>
+<li>What is an <strong>autoencoder</strong>?
+<ul>
+<li>It's a model given data \( x \), predict \( x \) while compressing it into a smaller hidden state \( z \)</li>
+</ul>
+</li>
+<li>What is an <strong>encoder</strong>?
+<ul>
+<li>An encoder takes a high-dimensional input \( x \) and outputs parameters of a Gaussian distribution (mean and variance \( \mu_{z|x} \) and \( \Sigma_{z|x} \)) that specify hidden variable \( z \).</li>
+<li>We can model this with a deep neural network \( q_\phi(z|x) \)</li>
+</ul>
+</li>
+<li>What is a <strong>decoder</strong>?
+<ul>
+<li>The decoder outputs a gaussian \( \mu_{x|z} \) and \( \Sigma_{x|z} \)) which we sample from to get \( \hat{x} \)</li>
+<li>We can model this with a deep neural network \( p_\theta(x|z) \)</li>
+</ul>
+</li>
+<li>How does a VAE generate images?
+<ul>
+<li>It samples latent variable \( z \) then samples \( \hat{x} \) from \( z \)</li>
+</ul>
+</li>
+<li>How do you train a VAE?
+<ul>
+<li>Find parameters that maximize the likelihood of the data</li>
+<li>This is intractable because of \( z \)</li>
+</ul>
+</li>
+</ul>
+<p>$$ p_\theta(x)=p_\theta(x_1,...,x_{n^2})=\int p_\theta(z)p_\theta(x|z)dz $$</p>
+<p><img src="https://i.imgur.com/o5MOlGZ.png" alt="" /></p>
+<ul>
+<li>What is the <strong>reparameterization trick</strong>?
+<ul>
+<li>(?) look at lecture 17 slides</li>
+<li>lots of complicated math</li>
+<li>Review <code>VAE</code></li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#generative-adversarial-networks" id="generative-adversarial-networks">Generative Adversarial Networks</a></h2>
+<ul>
+<li>What is the difference between a GAN and a Autoregressive Model or a VAE 
+<ul>
+<li>Autoregressive Models model an explicit tractable density</li>
+<li>VAE model an explicit intractable density</li>
+<li>GANs don't model a density. They model it implicity in a two-player game with a generator and discriminator (what the heck?)</li>
+<li>Review: <code>GAN</code></li>
+</ul>
+</li>
+<li>What is a <strong>generator</strong>?
+<ul>
+<li>\( G \) tries to generate real looking images \( x \) of input class given noise \( z \) (Gaussian or uniform distribution)</li>
+</ul>
+</li>
+<li>What is a <strong>discriminator</strong>?
+<ul>
+<li>D tries to classify fake images.</li>
+</ul>
+</li>
+<li>What is the GAN game?
+<ul>
+<li>\( \theta_G \) and \( \theta_D \) are parameters</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/6LuVsQs.png" alt="" /></p>
+<ul>
+<li>What is a trick used for better gradient signals?
+<ul>
+<li>instead of minimizing, maximize below. the gradients are more stable</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/0nOvDQp.png" alt="" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../section/section.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../project/project.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../section/section.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../project/project.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
