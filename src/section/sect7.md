@@ -56,6 +56,17 @@ $$ p_\theta(x)=p_\theta(x_1,...,x_{n^2})=\int p_\theta(z)p_\theta(x|z)dz $$
     * lots of complicated math
     * Review `VAE`
 
+![](https://i.imgur.com/N96QvIi.png)
+
+![](https://i.imgur.com/llP1nTk.png)
+
+* How do you sample from the Expectation?
+* Jensen's Inequailty
+
+![](https://i.imgur.com/VdhyTvM.png)
+
+* Just solve this instead
+
 ## Generative Adversarial Networks
 * What is the difference between a GAN and a Autoregressive Model or a VAE 
     * Autoregressive Models model an explicit tractable density
@@ -76,3 +87,6 @@ $$ p_\theta(x)=p_\theta(x_1,...,x_{n^2})=\int p_\theta(z)p_\theta(x|z)dz $$
 
 ![](https://i.imgur.com/0nOvDQp.png)
 
+## Other Questions
+* What is KL Divergence? $$ D_{KL}(p||q)=\sum_{i=1}^N p(x_i) \log(\frac{p(x_i)}{q(x_i)}) $$
+    * \\( q(x) \\) approximates \\( p(x) \\). If they match divergence is zero, but can go up to infinity

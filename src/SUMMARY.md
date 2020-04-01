@@ -1,4 +1,4 @@
-# Summary
+p# Summary
 
 - [Introduction](introduction.md)
 - [Lectures](lectures/lectures.md)
@@ -12,6 +12,7 @@
     - [Generative Models](lectures/lec16_generative_models.md)
     - [Generative Adversarial Networks](lectures/lec17_gan.md)
     - [Adversarial Networks](lectures/lec18_adversarial_networks.md)
+    - [Fairness in Deep Learning](lectures/lec19_fairness.md)
 - [Other Resources](other_resources/other_resources.md)
     - [Visualizing Seq2Seq with Attention](other_resources/viz_seq.md)
     - [Visualizing Transformers](other_resources/viz_transformers.md)
@@ -26,6 +27,7 @@
     - [Knowledge Distillation](project/knowledge_distill.md)
     - [DoReFa-Net](project/dorefa_net.md)
     - [Apprentice: Knowledge Distillation with Low-Precision Networks](project/apprentice_knowledge_distill.md)
+    - [Improved Knowledge Distillation via Teacher Assistant](project/ta.md)
 - [Exam Practice](exam/exam.md)
     - [Midterm 1](exam/midterm1/midterm1.md)
         - [Midterm 1 Spring 2019](exam/midterm1/mt1sp19.md)
