@@ -22,6 +22,8 @@ p# Summary
     - [Homework 2 RNN and LSTM](homework/hw2_rnn_lstm.md)
     - [Homework 3 Natural Language Processing](homework/hw3_nlp.md)
 - [Section](section/section.md)
+    - [Section 5: Attention Mechanisms and Transformers](section/sect5.md)
+    - [Section 6: Transformers and Pretraining in NLP](section/sect6.md)
     - [Section 7: Fooling Networks and Generative Models](section/sect7.md)
 - [Final Project: Model Distillation Low Precision Neural Networks](project/project.md)
     - [XNOR-net](project/xnor-net.md)
