@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Fairness in Deep Learning - CS 282: Deep Learning Notes Spring 2020</title>
+        <title>Section 6: Transformers and Pretraining in NLP - CS 282: Deep Learning Notes Spring 2020</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="../lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="../lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="../lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="../lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="../lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="../lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="../lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li><li class="expanded "><a href="../lectures/lec15_nlp_applications.html"><strong aria-hidden="true">2.7.</strong> NLP Applications</a></li><li class="expanded "><a href="../lectures/lec16_generative_models.html"><strong aria-hidden="true">2.8.</strong> Generative Models</a></li><li class="expanded "><a href="../lectures/lec17_gan.html"><strong aria-hidden="true">2.9.</strong> Generative Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec18_adversarial_networks.html"><strong aria-hidden="true">2.10.</strong> Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec19_fairness.html" class="active"><strong aria-hidden="true">2.11.</strong> Fairness in Deep Learning</a></li><li class="expanded "><a href="../lectures/lec20_imitation_learning.html"><strong aria-hidden="true">2.12.</strong> Imitation Learning</a></li></ol></li><li class="expanded "><a href="../other_resources/other_resources.html"><strong aria-hidden="true">3.</strong> Other Resources</a></li><li><ol class="section"><li class="expanded "><a href="../other_resources/viz_seq.html"><strong aria-hidden="true">3.1.</strong> Visualizing Seq2Seq with Attention</a></li><li class="expanded "><a href="../other_resources/viz_transformers.html"><strong aria-hidden="true">3.2.</strong> Visualizing Transformers</a></li><li class="expanded "><a href="../other_resources/viz_bert_elmo_gpt.html"><strong aria-hidden="true">3.3.</strong> Visualizing BERT, ELMo, and GPT</a></li></ol></li><li class="expanded "><a href="../homework/homework.html"><strong aria-hidden="true">4.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="../homework/hw2_rnn_lstm.html"><strong aria-hidden="true">4.1.</strong> Homework 2 RNN and LSTM</a></li><li class="expanded "><a href="../homework/hw3_nlp.html"><strong aria-hidden="true">4.2.</strong> Homework 3 Natural Language Processing</a></li></ol></li><li class="expanded "><a href="../section/section.html"><strong aria-hidden="true">5.</strong> Section</a></li><li><ol class="section"><li class="expanded "><a href="../section/sect5.html"><strong aria-hidden="true">5.1.</strong> Section 5: Attention Mechanisms and Transformers</a></li><li class="expanded "><a href="../section/sect6.html"><strong aria-hidden="true">5.2.</strong> Section 6: Transformers and Pretraining in NLP</a></li><li class="expanded "><a href="../section/sect7.html"><strong aria-hidden="true">5.3.</strong> Section 7: Fooling Networks and Generative Models</a></li></ol></li><li class="expanded "><a href="../project/project.html"><strong aria-hidden="true">6.</strong> Final Project: Model Distillation Low Precision Neural Networks</a></li><li><ol class="section"><li class="expanded "><a href="../project/xnor-net.html"><strong aria-hidden="true">6.1.</strong> XNOR-net</a></li><li class="expanded "><a href="../project/knowledge_distill.html"><strong aria-hidden="true">6.2.</strong> Knowledge Distillation</a></li><li class="expanded "><a href="../project/dorefa_net.html"><strong aria-hidden="true">6.3.</strong> DoReFa-Net</a></li><li class="expanded "><a href="../project/apprentice_knowledge_distill.html"><strong aria-hidden="true">6.4.</strong> Apprentice: Knowledge Distillation with Low-Precision Networks</a></li><li class="expanded "><a href="../project/ta.html"><strong aria-hidden="true">6.5.</strong> Improved Knowledge Distillation via Teacher Assistant</a></li><li class="expanded "><a href="../project/ta_code.html"><strong aria-hidden="true">6.6.</strong> Teacher Assistant Code</a></li></ol></li><li class="expanded "><a href="../exam/exam.html"><strong aria-hidden="true">7.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/midterm1.html"><strong aria-hidden="true">7.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/mt1sp19.html"><strong aria-hidden="true">7.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="../exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">7.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="../exam/midterm1/cheatsheet.html"><strong aria-hidden="true">7.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li><li class="expanded "><a href="../exam/quiz1/quiz1.html"><strong aria-hidden="true">7.2.</strong> Take Home Quiz 1</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="../lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="../lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="../lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="../lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="../lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="../lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="../lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li><li class="expanded "><a href="../lectures/lec15_nlp_applications.html"><strong aria-hidden="true">2.7.</strong> NLP Applications</a></li><li class="expanded "><a href="../lectures/lec16_generative_models.html"><strong aria-hidden="true">2.8.</strong> Generative Models</a></li><li class="expanded "><a href="../lectures/lec17_gan.html"><strong aria-hidden="true">2.9.</strong> Generative Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec18_adversarial_networks.html"><strong aria-hidden="true">2.10.</strong> Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec19_fairness.html"><strong aria-hidden="true">2.11.</strong> Fairness in Deep Learning</a></li><li class="expanded "><a href="../lectures/lec20_imitation_learning.html"><strong aria-hidden="true">2.12.</strong> Imitation Learning</a></li></ol></li><li class="expanded "><a href="../other_resources/other_resources.html"><strong aria-hidden="true">3.</strong> Other Resources</a></li><li><ol class="section"><li class="expanded "><a href="../other_resources/viz_seq.html"><strong aria-hidden="true">3.1.</strong> Visualizing Seq2Seq with Attention</a></li><li class="expanded "><a href="../other_resources/viz_transformers.html"><strong aria-hidden="true">3.2.</strong> Visualizing Transformers</a></li><li class="expanded "><a href="../other_resources/viz_bert_elmo_gpt.html"><strong aria-hidden="true">3.3.</strong> Visualizing BERT, ELMo, and GPT</a></li></ol></li><li class="expanded "><a href="../homework/homework.html"><strong aria-hidden="true">4.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="../homework/hw2_rnn_lstm.html"><strong aria-hidden="true">4.1.</strong> Homework 2 RNN and LSTM</a></li><li class="expanded "><a href="../homework/hw3_nlp.html"><strong aria-hidden="true">4.2.</strong> Homework 3 Natural Language Processing</a></li></ol></li><li class="expanded "><a href="../section/section.html"><strong aria-hidden="true">5.</strong> Section</a></li><li><ol class="section"><li class="expanded "><a href="../section/sect5.html"><strong aria-hidden="true">5.1.</strong> Section 5: Attention Mechanisms and Transformers</a></li><li class="expanded "><a href="../section/sect6.html" class="active"><strong aria-hidden="true">5.2.</strong> Section 6: Transformers and Pretraining in NLP</a></li><li class="expanded "><a href="../section/sect7.html"><strong aria-hidden="true">5.3.</strong> Section 7: Fooling Networks and Generative Models</a></li></ol></li><li class="expanded "><a href="../project/project.html"><strong aria-hidden="true">6.</strong> Final Project: Model Distillation Low Precision Neural Networks</a></li><li><ol class="section"><li class="expanded "><a href="../project/xnor-net.html"><strong aria-hidden="true">6.1.</strong> XNOR-net</a></li><li class="expanded "><a href="../project/knowledge_distill.html"><strong aria-hidden="true">6.2.</strong> Knowledge Distillation</a></li><li class="expanded "><a href="../project/dorefa_net.html"><strong aria-hidden="true">6.3.</strong> DoReFa-Net</a></li><li class="expanded "><a href="../project/apprentice_knowledge_distill.html"><strong aria-hidden="true">6.4.</strong> Apprentice: Knowledge Distillation with Low-Precision Networks</a></li><li class="expanded "><a href="../project/ta.html"><strong aria-hidden="true">6.5.</strong> Improved Knowledge Distillation via Teacher Assistant</a></li><li class="expanded "><a href="../project/ta_code.html"><strong aria-hidden="true">6.6.</strong> Teacher Assistant Code</a></li></ol></li><li class="expanded "><a href="../exam/exam.html"><strong aria-hidden="true">7.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/midterm1.html"><strong aria-hidden="true">7.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/mt1sp19.html"><strong aria-hidden="true">7.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="../exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">7.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="../exam/midterm1/cheatsheet.html"><strong aria-hidden="true">7.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li><li class="expanded "><a href="../exam/quiz1/quiz1.html"><strong aria-hidden="true">7.2.</strong> Take Home Quiz 1</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,113 +151,117 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#fairness-in-deep-learning" id="fairness-in-deep-learning">Fairness in Deep Learning</a></h1>
-<p>Deep Learning has bias</p>
-<p><img src="https://i.imgur.com/HeZAFL6.png" alt="" /></p>
+                        <h1><a class="header" href="#section-6-transformers-and-pretraining-in-nlp" id="section-6-transformers-and-pretraining-in-nlp">Section 6: Transformers and Pretraining in NLP</a></h1>
+<h2><a class="header" href="#transformers" id="transformers">Transformers</a></h2>
 <ul>
-<li>Universal Approximation, but
+<li>
+<p>What are the parts of a transformer?</p>
 <ul>
-<li>the data we train can have <strong>sampling bias</strong>
-<ul>
-<li>Australians are under-represented</li>
+<li>word embeddings</li>
+<li>positional embeddings</li>
+<li>self-attention</li>
+<li>cross-attention</li>
+<li>feed-forward layers</li>
 </ul>
 </li>
-<li><strong>selection bias</strong></li>
+<li>
+<p>What inputs does a transformer receive</p>
+<ul>
+<li>two sequences x_source and x_target</li>
 </ul>
 </li>
-<li>But actually want bias to be equal to variance</li>
-</ul>
-<h2><a class="header" href="#unawareness-in-fairness" id="unawareness-in-fairness">Unawareness in Fairness</a></h2>
-<p><img src="https://i.imgur.com/eNJiAGY.png" alt="" /></p>
+<li>
+<p>What types of transformers are there?</p>
 <ul>
-<li>\( A \) is protected attribute</li>
-<li>we want <strong>unawareness</strong>, \( f(X, A)=f(X) \)</li>
-</ul>
-<h2><a class="header" href="#demographyc-parity" id="demographyc-parity">Demographyc Parity</a></h2>
-<p><img src="https://i.imgur.com/vK5rwFn.png" alt="" /></p>
-<ul>
-<li>\( P(\hat{Y}=1|A=Australian) = P(\hat{Y}=1|A=American)\)</li>
-<li>The prediction is independent?</li>
-<li>There is a notation</li>
-</ul>
-<p><img src="https://i.imgur.com/sZE9srs.png" alt="" /></p>
-<ul>
-<li>somehow unfair</li>
-</ul>
-<h2><a class="header" href="#all-other-things-being-equal" id="all-other-things-being-equal">All Other Things Being Equal</a></h2>
-<p><img src="https://i.imgur.com/ALTQ9ZI.png" alt="" /></p>
-<ul>
-<li>Think about hypothetical outputs</li>
-<li><code>Causal Inference</code></li>
-</ul>
-<h2><a class="header" href="#separation" id="separation">Separation</a></h2>
-<p><img src="https://i.imgur.com/3EggPu1.png" alt="" /></p>
-<ul>
-<li>Separation is Conditionally Independent given \( Y \)</li>
-</ul>
-<p><img src="https://i.imgur.com/LyiAGIk.png" alt="" /></p>
-<ul>
-<li>Constrain it more such that \( Y=1 \)
-<ul>
-<li>Only be fair for people worthy of loans</li>
+<li>encoder attention (non-casual self-attention)</li>
+<li>decoder attention (casual self-attention)</li>
+<li>encoder-decoder attention (cross-attention)</li>
 </ul>
 </li>
 </ul>
-<h2><a class="header" href="#sufficiency" id="sufficiency">Sufficiency</a></h2>
+<p><img src="https://i.imgur.com/mlNcLcg.png" alt="" /></p>
+<h2><a class="header" href="#transformer-encoder" id="transformer-encoder">Transformer Encoder</a></h2>
 <ul>
-<li>Too complicated</li>
+<li>Input + Positional Embedding</li>
+<li>we use positional encoding to differential sequence positioning</li>
+<li>What is the attention update function?</li>
 </ul>
-<h2><a class="header" href="#causal-reasoning" id="causal-reasoning">Causal Reasoning</a></h2>
-<p><img src="https://i.imgur.com/Puzi4he.png" alt="" /></p>
+<p><img src="https://i.imgur.com/FQnyA88.png" alt="" /></p>
 <ul>
-<li>Graphical Models, for factorization of joint distribution</li>
-</ul>
-<p><img src="https://i.imgur.com/3nDF36r.png" alt="" /></p>
+<li>What is multihead?
 <ul>
-<li>as an algorithm
-<ul>
-<li>sampling then joint distribution</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.imgur.com/1tQytMq.png" alt="" /></p>
-<ul>
-<li><code>intervention</code></li>
-</ul>
-<p><img src="https://i.imgur.com/1tQytMq.png" alt="" /></p>
-<ul>
-<li>in a graphical model there is a lot of other indirect effects</li>
-</ul>
-<h2><a class="header" href="#gan-like-optimization" id="gan-like-optimization">GAN like optimization</a></h2>
-<p><img src="https://i.imgur.com/8oXEGK6.png" alt="" /></p>
-<ul>
-<li>with a Jenson Shannon Divergence
-<ul>
-<li>optimize distribution similarity</li>
+<li>has another tensor dimension!</li>
+<li>\( B \times L_{source} \times D \)</li>
+<li>to \( B \times H \times L_{source} \times D/H \)</li>
+<li>add negative infinity for padded positions?</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/74zJRxd.png" alt="" /></p>
+<h2><a class="header" href="#feedforward-layer" id="feedforward-layer">Feedforward layer</a></h2>
 <ul>
-<li>Y, and X</li>
-<li>bottom is for fairness, protected value
+<li>What is a feed forward layer?
 <ul>
-<li>switch between real vs fake</li>
+<li>literally a linear transformation (linear layer)</li>
+</ul>
+</li>
+<li>Where is most of the computation?
+<ul>
+<li>in the feed forward layer!</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/0T9b1gH.png" alt="" /></p>
+<h2><a class="header" href="#transformer-decoder" id="transformer-decoder">Transformer Decoder</a></h2>
+<h3><a class="header" href="#masked-decoder-self-attention" id="masked-decoder-self-attention">Masked Decoder Self-Attention</a></h3>
 <ul>
-<li>lower bound</li>
+<li>What is masked decoder self-attention?
+<ul>
+<li>We want each position in the sequence to pay attention to previous positions but not future positions.</li>
 </ul>
-<p><img src="https://i.imgur.com/4uKD2aZ.png" alt="" /></p>
+</li>
+<li>how do we do that?
 <ul>
-<li>Conditional Mutual Information</li>
+<li>if i &lt;= j set the score to q_i^T * k_j / sqrt(D) else -inf</li>
 </ul>
-<h2><a class="header" href="#summary" id="summary">Summary</a></h2>
-<p><img src="https://i.imgur.com/x5JfLNm.png" alt="" /></p>
+</li>
+</ul>
+<h2><a class="header" href="#encoder-decoder-attention" id="encoder-decoder-attention">Encoder-Decoder Attention</a></h2>
 <ul>
-<li></li>
+<li>Aka cross-attention</li>
+<li>What is the difference to other attentions?
+<ul>
+<li>one attention generates queries (from X_target)</li>
+<li>one attention generates keys and values (from X_source)
+<ul>
+<li>K = X_source * W_K</li>
+<li>V = X_source * W_V</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#pre-training-in-nlp" id="pre-training-in-nlp">Pre-training in NLP</a></h2>
+<ul>
+<li>what is the generic pre-training task?
+<ul>
+<li>given large <strong>unlabeled</strong> text, predict next word or predict missing word</li>
+</ul>
+</li>
+<li>What are the two main models?
+<ul>
+<li>BERT (Bidirection Masked-Language Modeling)</li>
+<li>GPT-2 (left to right)</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#" id=""></a></h3>
+<p><img src="https://i.imgur.com/Bs1c6Xo.png" alt="" /></p>
+<ul>
+<li>4 different &quot;adapted&quot; tasks</li>
+</ul>
+<h3><a class="header" href="#gpt-2" id="gpt-2">GPT-2</a></h3>
+<ul>
+<li>predicts next word</li>
+<li>can generate words!</li>
 </ul>
 
                     </main>
@@ -265,13 +269,13 @@
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../lectures/lec18_adversarial_networks.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../section/sect5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../lectures/lec20_imitation_learning.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../section/sect7.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -283,13 +287,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../lectures/lec18_adversarial_networks.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../section/sect5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../lectures/lec20_imitation_learning.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="../section/sect7.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
