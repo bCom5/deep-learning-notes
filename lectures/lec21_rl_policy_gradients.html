@@ -1,0 +1,455 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Reinforcement Learning: Policy Gradients - CS 282: Deep Learning Notes Spring 2020</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="../lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="../lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="../lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="../lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="../lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="../lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="../lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li><li class="expanded "><a href="../lectures/lec15_nlp_applications.html"><strong aria-hidden="true">2.7.</strong> NLP Applications</a></li><li class="expanded "><a href="../lectures/lec16_generative_models.html"><strong aria-hidden="true">2.8.</strong> Generative Models</a></li><li class="expanded "><a href="../lectures/lec17_gan.html"><strong aria-hidden="true">2.9.</strong> Generative Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec18_adversarial_networks.html"><strong aria-hidden="true">2.10.</strong> Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec19_fairness.html"><strong aria-hidden="true">2.11.</strong> Fairness in Deep Learning</a></li><li class="expanded "><a href="../lectures/lec20_imitation_learning.html"><strong aria-hidden="true">2.12.</strong> Imitation Learning</a></li><li class="expanded "><a href="../lectures/lec21_rl_policy_gradients.html" class="active"><strong aria-hidden="true">2.13.</strong> Reinforcement Learning: Policy Gradients</a></li></ol></li><li class="expanded "><a href="../other_resources/other_resources.html"><strong aria-hidden="true">3.</strong> Other Resources</a></li><li><ol class="section"><li class="expanded "><a href="../other_resources/viz_seq.html"><strong aria-hidden="true">3.1.</strong> Visualizing Seq2Seq with Attention</a></li><li class="expanded "><a href="../other_resources/viz_transformers.html"><strong aria-hidden="true">3.2.</strong> Visualizing Transformers</a></li><li class="expanded "><a href="../other_resources/viz_bert_elmo_gpt.html"><strong aria-hidden="true">3.3.</strong> Visualizing BERT, ELMo, and GPT</a></li></ol></li><li class="expanded "><a href="../homework/homework.html"><strong aria-hidden="true">4.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="../homework/hw2_rnn_lstm.html"><strong aria-hidden="true">4.1.</strong> Homework 2 RNN and LSTM</a></li><li class="expanded "><a href="../homework/hw3_nlp.html"><strong aria-hidden="true">4.2.</strong> Homework 3 Natural Language Processing</a></li></ol></li><li class="expanded "><a href="../section/section.html"><strong aria-hidden="true">5.</strong> Section</a></li><li><ol class="section"><li class="expanded "><a href="../section/sect5.html"><strong aria-hidden="true">5.1.</strong> Section 5: Attention Mechanisms and Transformers</a></li><li class="expanded "><a href="../section/sect6.html"><strong aria-hidden="true">5.2.</strong> Section 6: Transformers and Pretraining in NLP</a></li><li class="expanded "><a href="../section/sect7.html"><strong aria-hidden="true">5.3.</strong> Section 7: Fooling Networks and Generative Models</a></li></ol></li><li class="expanded "><a href="../project/project.html"><strong aria-hidden="true">6.</strong> Final Project: Model Distillation Low Precision Neural Networks</a></li><li><ol class="section"><li class="expanded "><a href="../project/xnor-net.html"><strong aria-hidden="true">6.1.</strong> XNOR-net</a></li><li class="expanded "><a href="../project/knowledge_distill.html"><strong aria-hidden="true">6.2.</strong> Knowledge Distillation</a></li><li class="expanded "><a href="../project/dorefa_net.html"><strong aria-hidden="true">6.3.</strong> DoReFa-Net</a></li><li class="expanded "><a href="../project/apprentice_knowledge_distill.html"><strong aria-hidden="true">6.4.</strong> Apprentice: Knowledge Distillation with Low-Precision Networks</a></li><li class="expanded "><a href="../project/ta.html"><strong aria-hidden="true">6.5.</strong> Improved Knowledge Distillation via Teacher Assistant</a></li><li class="expanded "><a href="../project/ta_code.html"><strong aria-hidden="true">6.6.</strong> Teacher Assistant Code</a></li></ol></li><li class="expanded "><a href="../exam/exam.html"><strong aria-hidden="true">7.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/midterm1.html"><strong aria-hidden="true">7.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/mt1sp19.html"><strong aria-hidden="true">7.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="../exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">7.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="../exam/midterm1/cheatsheet.html"><strong aria-hidden="true">7.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li><li class="expanded "><a href="../exam/quiz1/quiz1.html"><strong aria-hidden="true">7.2.</strong> Take Home Quiz 1</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">CS 282: Deep Learning Notes Spring 2020</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#reinforcement-learning-policy-gradients" id="reinforcement-learning-policy-gradients">Reinforcement Learning: Policy Gradients</a></h1>
+<p><a href="https://www.youtube.com/watch?v=rpKkZ71A_xE">Link</a></p>
+<p><img src="https://i.imgur.com/1JuznSr.png" alt="" /></p>
+<ul>
+<li>You have a:
+<ul>
+<li><strong>state</strong></li>
+<li>which you observe with an <strong>observation</strong></li>
+<li>you choose what action to take (<strong>policy</strong>)
+<ul>
+<li>\( \pi_{\theta} ( a_t | o_t ) \)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/2NCCfsM.png" alt="" /></p>
+<ul>
+<li>we use a reward function
+<ul>
+<li>what is the best action for this state?</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#markov-decision" id="markov-decision">Markov Decision</a></h2>
+<p><img src="https://i.imgur.com/txTpesj.png" alt="" /></p>
+<ul>
+<li>Markov Chain</li>
+<li>transition is indepedent of state before previous state</li>
+</ul>
+<p><img src="https://i.imgur.com/dTVyPYO.png" alt="" /></p>
+<ul>
+<li>Transition is a tensor with state and action</li>
+</ul>
+<p><img src="https://i.imgur.com/txTpesj.png" alt="" /></p>
+<ul>
+<li>reward function takes a state and action </li>
+<li>trajectory is a sequence of states and actions</li>
+</ul>
+<p><img src="https://i.imgur.com/HEHm68j.png" alt="" /></p>
+<ul>
+<li>states are orange</li>
+<li>actions are green, transition probabilities are green</li>
+<li>rewards are red
+<ul>
+<li>some are zero some are non-zero</li>
+</ul>
+</li>
+<li>environment can transition to another state</li>
+<li>at \( s_0 \) you could take \( a_0 \) with prob 0.3 or other 0.7. Taking \( a_0 \) has prob 0.2 to go to \( s_1 \) or 0.8 to \( s_1' \)</li>
+</ul>
+<h2><a class="header" href="#reinforcement-learning" id="reinforcement-learning">Reinforcement Learning</a></h2>
+<p><img src="https://i.imgur.com/4pOOxOm.png" alt="" /></p>
+<ul>
+<li>the model learns the policy!
+<ul>
+<li>\( \pi_theta(a | s) \)</li>
+</ul>
+</li>
+<li>the probability is the state and action is </li>
+<li>the goal is to find the parameters that maximizes expected reward
+<ul>
+<li>all rewards from transitions taken</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#value-functions" id="value-functions">Value Functions</a></h2>
+<p><img src="https://i.imgur.com/J9rVYCc.png" alt="" /></p>
+<ul>
+<li>value of a state
+<ul>
+<li>sum for each action</li>
+<li>policy (which is a probability) (think like after softmax before argmax)</li>
+<li>times reward</li>
+<li>plus sum of total future rewards
+<ul>
+<li>Value future reward</li>
+<li>probability to enter that state</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>it's recursive</li>
+</ul>
+<h2><a class="header" href="#belmman-updadte" id="belmman-updadte">Belmman Updadte</a></h2>
+<p><img src="https://i.imgur.com/jwTBMMz.png" alt="" /></p>
+<ul>
+<li>Take the action that maximizes the term (reward + future scaled &quot;expected&quot; value from reward)</li>
+</ul>
+<p><img src="https://i.imgur.com/KYVHn4L.png" alt="" /></p>
+<ul>
+<li>to get values, initialize each state value to zero, and update
+<ul>
+<li>state 1.0 get reward 1, etc.</li>
+</ul>
+</li>
+<li>Then propogates the weights back 2.2 -&gt; 2.0 because of 2.2 * .9 = 1.98 -&gt; 2.0</li>
+</ul>
+<p><img src="https://i.imgur.com/PPtIYRq.png" alt="" /></p>
+<ul>
+<li>But there can be cycles!
+<ul>
+<li><strong>not dynamic programming</strong></li>
+</ul>
+</li>
+<li>if acyclic, then is O(SA) # states, # actions</li>
+</ul>
+<p><img src="https://i.imgur.com/VcuDz1x.png" alt="" /></p>
+<ul>
+<li>infinite horozon vs finite horizon?</li>
+</ul>
+<h2><a class="header" href="#challenges-of-reinforcement-learning" id="challenges-of-reinforcement-learning">Challenges of Reinforcement Learning</a></h2>
+<p><img src="https://i.imgur.com/pLKiHis.png" alt="" /></p>
+<ul>
+<li>the reward takes action which is discrete. We can't differentiate through this.</li>
+<li>Don't know the reward function</li>
+<li><code>Temporal Credit Assignment Problem</code>
+<ul>
+<li>hundreds of actions to get to this step, they don't have any reward</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#policy-gradient-approaches" id="policy-gradient-approaches">Policy Gradient Approaches</a></h2>
+<p><img src="https://i.imgur.com/XCbcH5n.png" alt="" /></p>
+<ul>
+<li>we can estimate the gradient</li>
+</ul>
+<p><img src="https://i.imgur.com/5mjNigf.png" alt="" /></p>
+<ul>
+<li>we want \( J(\theta) \)
+<ul>
+<li>we can approximate it with samples \(  \frac{1}{N} \sum_{i} ...\)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/H6DmBUp.png" alt="" /></p>
+<ul>
+<li>\( J(\theta) = \int \pi_{\theta} (\tau) r(\tau) d\tau \)
+<ul>
+<li>our policy network and the reward it would get</li>
+</ul>
+</li>
+<li>to update our weights in the policy network
+<ul>
+<li>we can sample gradient log of our policy and the rewards it gets</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/JqZXAGu.png" alt="" /></p>
+<ul>
+<li>our policy - based on all states and actions up to the current state and action
+<ul>
+<li>it is the probability of the initial state, and probability to get to our state</li>
+</ul>
+</li>
+<li>expanded, they have no theta, so are zero.</li>
+<li><code>solution</code> sample from </li>
+</ul>
+<p><img src="https://i.imgur.com/8NZVd9n.png" alt="" /></p>
+<ul>
+<li>run the policy</li>
+<li>get gradient which is possible on each action individually</li>
+</ul>
+<p><img src="https://i.imgur.com/cVo1C6S.png" alt="" /></p>
+<ul>
+<li>minimizes gradient of crostt-entropy loss
+<ul>
+<li>as a neural network - forward state -&gt; policy -&gt; action</li>
+<li>gradient correct action -&gt; policy network</li>
+</ul>
+</li>
+<li>ml problem of classification \( s_t, a_t \)</li>
+</ul>
+<p><img src="https://i.imgur.com/MbGYoCC.png" alt="" /></p>
+<ul>
+<li>predicting a continuous value - find mean</li>
+</ul>
+<h2><a class="header" href="#reducing-variance" id="reducing-variance">Reducing Variance</a></h2>
+<p><img src="https://i.imgur.com/ICOSb7W.png" alt="" /></p>
+<ul>
+<li>reward to go, Q function?</li>
+</ul>
+<p><img src="https://i.imgur.com/eXsugYo.png" alt="" /></p>
+<ul>
+<li>subtract the baseline (average)
+<ul>
+<li>it's unbiased</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#off-policy-learning" id="off-policy-learning">Off Policy Learning</a></h2>
+<ul>
+<li>like from a human (not from the network's policy)</li>
+</ul>
+<p><img src="https://i.imgur.com/RprgdRc.png" alt="" /></p>
+<ul>
+<li>from another distribution \( q(x) \)</li>
+<li>need a correction factor of L where expectation is 1</li>
+<li>just use them as a ratio</li>
+</ul>
+<p><img src="https://i.imgur.com/U4dNmCa.png" alt="" /></p>
+<ul>
+<li>update using current policy but sampling from \( \pi_{\theta'} \)</li>
+</ul>
+<h2><a class="header" href="#challenges-with-policy-gradients" id="challenges-with-policy-gradients">Challenges with Policy Gradients</a></h2>
+<p><img src="https://i.imgur.com/F1pgAaQ.png" alt="" /></p>
+<ul>
+<li>O(NT) - lots of steps</li>
+<li>Gradient estimate has hith variance</li>
+</ul>
+<p><img src="https://i.imgur.com/sHUPFjL.png" alt="" /></p>
+<ul>
+<li>gradients steps expensive, minimize number of steps</li>
+</ul>
+<p><img src="https://i.imgur.com/h65y6vY.png" alt="" /></p>
+<ul>
+<li>use new reward - maximize with penalty large change in \( \pi_{\theta} \) ?</li>
+</ul>
+<h2><a class="header" href="#trust-region-policy-optimization" id="trust-region-policy-optimization">Trust Region Policy Optimization</a></h2>
+<p><img src="https://i.imgur.com/IWJATL1.png" alt="" /></p>
+<ul>
+<li>make sure the sample from reward in \( \pi_{\theta'} \) similar to \( \pi_{\theta} \)</li>
+</ul>
+<p><img src="https://i.imgur.com/AF8S8C2.png" alt="" /></p>
+<ul>
+<li>uses a natural gradient like a newton step</li>
+</ul>
+<h2><a class="header" href="#proximal-policy-optimization" id="proximal-policy-optimization">Proximal Policy Optimization</a></h2>
+<p><img src="https://i.imgur.com/qXC1aK6.png" alt="" /></p>
+<ul>
+<li>instead of KL divergence</li>
+<li>resists changes?</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../lectures/lec20_imitation_learning.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../other_resources/other_resources.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../lectures/lec20_imitation_learning.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../other_resources/other_resources.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
