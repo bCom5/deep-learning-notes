@@ -1,4 +1,4 @@
-p# Summary
+# Summary
 
 - [Introduction](introduction.md)
 - [Lectures](lectures/lectures.md)
@@ -15,6 +15,7 @@ p# Summary
     - [Fairness in Deep Learning](lectures/lec19_fairness.md)
     - [Imitation Learning](lectures/lec20_imitation_learning.md)
     - [Reinforcement Learning: Policy Gradients](lectures/lec21_rl_policy_gradients.md)
+    - [Deep RL: Value-Based Methods](lectures/lec22_deep_rl_value_based.md)
 - [Other Resources](other_resources/other_resources.md)
     - [Visualizing Seq2Seq with Attention](other_resources/viz_seq.md)
     - [Visualizing Transformers](other_resources/viz_transformers.md)
