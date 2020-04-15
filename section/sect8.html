@@ -1,0 +1,351 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Section 8: Fairness, MDP, Imitation Learning - CS 282: Deep Learning Notes Spring 2020</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="../lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="../lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="../lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="../lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="../lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="../lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="../lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li><li class="expanded "><a href="../lectures/lec15_nlp_applications.html"><strong aria-hidden="true">2.7.</strong> NLP Applications</a></li><li class="expanded "><a href="../lectures/lec16_generative_models.html"><strong aria-hidden="true">2.8.</strong> Generative Models</a></li><li class="expanded "><a href="../lectures/lec17_gan.html"><strong aria-hidden="true">2.9.</strong> Generative Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec18_adversarial_networks.html"><strong aria-hidden="true">2.10.</strong> Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec19_fairness.html"><strong aria-hidden="true">2.11.</strong> Fairness in Deep Learning</a></li><li class="expanded "><a href="../lectures/lec20_imitation_learning.html"><strong aria-hidden="true">2.12.</strong> Imitation Learning</a></li><li class="expanded "><a href="../lectures/lec21_rl_policy_gradients.html"><strong aria-hidden="true">2.13.</strong> Reinforcement Learning: Policy Gradients</a></li><li class="expanded "><a href="../lectures/lec22_deep_rl_value_based.html"><strong aria-hidden="true">2.14.</strong> Deep RL: Value-Based Methods</a></li></ol></li><li class="expanded "><a href="../other_resources/other_resources.html"><strong aria-hidden="true">3.</strong> Other Resources</a></li><li><ol class="section"><li class="expanded "><a href="../other_resources/viz_seq.html"><strong aria-hidden="true">3.1.</strong> Visualizing Seq2Seq with Attention</a></li><li class="expanded "><a href="../other_resources/viz_transformers.html"><strong aria-hidden="true">3.2.</strong> Visualizing Transformers</a></li><li class="expanded "><a href="../other_resources/viz_bert_elmo_gpt.html"><strong aria-hidden="true">3.3.</strong> Visualizing BERT, ELMo, and GPT</a></li><li class="expanded "><a href="../other_resources/review_cs188.html"><strong aria-hidden="true">3.4.</strong> Review CS 188: AI</a></li></ol></li><li class="expanded "><a href="../homework/homework.html"><strong aria-hidden="true">4.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="../homework/hw2_rnn_lstm.html"><strong aria-hidden="true">4.1.</strong> Homework 2 RNN and LSTM</a></li><li class="expanded "><a href="../homework/hw3_nlp.html"><strong aria-hidden="true">4.2.</strong> Homework 3 Natural Language Processing</a></li></ol></li><li class="expanded "><a href="../section/section.html"><strong aria-hidden="true">5.</strong> Section</a></li><li><ol class="section"><li class="expanded "><a href="../section/sect5.html"><strong aria-hidden="true">5.1.</strong> Section 5: Attention Mechanisms and Transformers</a></li><li class="expanded "><a href="../section/sect6.html"><strong aria-hidden="true">5.2.</strong> Section 6: Transformers and Pretraining in NLP</a></li><li class="expanded "><a href="../section/sect7.html"><strong aria-hidden="true">5.3.</strong> Section 7: Fooling Networks and Generative Models</a></li><li class="expanded "><a href="../section/sect8.html" class="active"><strong aria-hidden="true">5.4.</strong> Section 8: Fairness, MDP, Imitation Learning</a></li></ol></li><li class="expanded "><a href="../project/project.html"><strong aria-hidden="true">6.</strong> Final Project: Model Distillation Low Precision Neural Networks</a></li><li><ol class="section"><li class="expanded "><a href="../project/xnor-net.html"><strong aria-hidden="true">6.1.</strong> XNOR-net</a></li><li class="expanded "><a href="../project/knowledge_distill.html"><strong aria-hidden="true">6.2.</strong> Knowledge Distillation</a></li><li class="expanded "><a href="../project/dorefa_net.html"><strong aria-hidden="true">6.3.</strong> DoReFa-Net</a></li><li class="expanded "><a href="../project/apprentice_knowledge_distill.html"><strong aria-hidden="true">6.4.</strong> Apprentice: Knowledge Distillation with Low-Precision Networks</a></li><li class="expanded "><a href="../project/ta.html"><strong aria-hidden="true">6.5.</strong> Improved Knowledge Distillation via Teacher Assistant</a></li><li class="expanded "><a href="../project/ta_code.html"><strong aria-hidden="true">6.6.</strong> Teacher Assistant Code</a></li></ol></li><li class="expanded "><a href="../exam/exam.html"><strong aria-hidden="true">7.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/midterm1.html"><strong aria-hidden="true">7.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/mt1sp19.html"><strong aria-hidden="true">7.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="../exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">7.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="../exam/midterm1/cheatsheet.html"><strong aria-hidden="true">7.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li><li class="expanded "><a href="../exam/quiz1/quiz1.html"><strong aria-hidden="true">7.2.</strong> Take Home Quiz 1</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">CS 282: Deep Learning Notes Spring 2020</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#section-8-fairness-mdp-imitation-learning" id="section-8-fairness-mdp-imitation-learning">Section 8: Fairness, MDP, Imitation Learning</a></h1>
+<h2><a class="header" href="#fairness" id="fairness">Fairness</a></h2>
+<ul>
+<li>We don't the model to bias irrelevant features including those legally protected
+<ul>
+<li>race, sex, citizenship</li>
+</ul>
+</li>
+<li>biases:
+<ul>
+<li>learning algorithms rely on data</li>
+<li>bias from data collection and selection</li>
+<li>if bias is 0, variance is infinity</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#notation" id="notation">Notation:</a></h3>
+<ul>
+<li>\( X \): vector of the features of an individual</li>
+<li>\( A \): the protected attributes such as national origin</li>
+<li>\( Y \): label such as received loan or not</li>
+<li>\( \hat{Y} = f(X, A) \): model output</li>
+</ul>
+<h3><a class="header" href="#definitions" id="definitions">Definitions:</a></h3>
+<ul>
+<li><code>Unawareness</code>: \(f(X, A) = f(X) \) a model without A does the same as a model with A
+<ul>
+<li>however features are usually correlated, so A camn be predicted by other attributes in X</li>
+</ul>
+</li>
+<li><code>Demographic Parity</code>: \( P[\hat{Y} = 1 | A = 0] = P[\hat{Y} = 1 | A = 1] \) or \( \hat{Y}  ~ \bot ~ A \) (the predicted Y is <strong>conditionally independent</strong> of A).
+<ul>
+<li>since we have A, this solves the feature correlation problem</li>
+<li>problem of <strong>Laziness</strong>, accept qualified candidate for \( A = 0 \) and randomly accept for \( A = 1 \) (with the same probability?), demographic parity is maintained</li>
+</ul>
+</li>
+<li><code>Separation</code>: \( \hat{Y} ~ \bot ~ A | Y \) given that the candidate is qualified, the predicted Y output is independent of protected attributed.
+<ul>
+<li>equal opportunity</li>
+<li>?</li>
+</ul>
+</li>
+<li>What is <code>Sufficiency</code>?
+<ul>
+<li>\( Y ~ \bot ~ A | \hat{Y} \) given the predictors output, it should reflect the true score?</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#optimizing-for-fairness" id="optimizing-for-fairness">Optimizing for Fairness</a></h3>
+<ul>
+<li>How do you optimize for fairness?
+<ul>
+<li>minimize Jenson-Shannon divergence optimizing like a GAN</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/A57FfFX.png" alt="" /></p>
+<ul>
+<li>How does this work again?</li>
+</ul>
+<h2><a class="header" href="#markov-decision-processes-mdp" id="markov-decision-processes-mdp">Markov Decision Processes (MDP)</a></h2>
+<ul>
+<li>
+<p>What is a <code>Markov Decision Process</code>?</p>
+<ul>
+<li>for games, where you have states, actions, and rewards</li>
+<li>at every time step we are in state s. the agent must choose an action a for that state. Then we transition to a new state s' based on some probability distribution. On transition a reward r is generated.</li>
+</ul>
+</li>
+<li>
+<p>What is a <code>trajectory</code>?</p>
+<ul>
+<li>sequence of transitions</li>
+<li>\( \tau = ((s_0, a_0), (s_1, a_1), ..., (s_t, a_t, r_t))</li>
+</ul>
+</li>
+<li>
+<p>How can you mathematically define a MDP?</p>
+<ul>
+<li>A 4-tuple: \( (S, A, T, r) \)
+<ul>
+<li>\( S \): set, set of states</li>
+<li>\( A \): set, set of actions A[s] given state, these are the actions you can take</li>
+<li>\( T(s, a) \): function(S, A) -&gt; S, transition function that takes current state adn action that returns a new state. In a <strong>stochastic MDP</strong> the new state is returned from some distribution \( P(s_new | s_old, a) \) prob of each new state given old state and action taken</li>
+<li>\( r(s, a, s') \): function(S, A, S) -&gt; real, reward function for the state you are in, action you took, and state you will be in. This can also be r(s, a) where s is actually the new state s'. It's confusing sorry.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>What is <code>policy</code>?</p>
+<ul>
+<li>Our attempt at a solution to the MDP.</li>
+<li>\( \pi(\tau) \)</li>
+<li>it attempts to maximized expected reward for it's given state and action</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/EogyJKY.png" alt="" /></p>
+<ul>
+<li>
+<p>trajectory generated by the policy</p>
+</li>
+<li>
+<p>How would you explain it if the environment was fully deterministic?</p>
+<ul>
+<li>you know what action to take, the one that maximizes reward</li>
+</ul>
+</li>
+<li>
+<p>What is \( \tau ~ p_{\pi}(\tau) \)?</p>
+<ul>
+<li>weighed sum and and prob of starting at that given state</li>
+</ul>
+</li>
+<li>
+<p>What is the <code>discount factor</code>?</p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/jNVeL9M.png" alt="" /></p>
+<ul>
+<li>rewards in the present are worth more.</li>
+</ul>
+<h3><a class="header" href="#other-questions" id="other-questions">Other questions</a></h3>
+<ul>
+<li>What is Jenson-Shannon Divergence?</li>
+<li>Why is \( r_t \) in the trajectory?</li>
+<li>What is an example run of argmaxing the policy?</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../section/sect7.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../project/project.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../section/sect7.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../project/project.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
