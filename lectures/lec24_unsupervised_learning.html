@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Unsupervised Learning - CS 282: Deep Learning Notes Spring 2020</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="expanded "><a href="../lectures/lectures.html"><strong aria-hidden="true">2.</strong> Lectures</a></li><li><ol class="section"><li class="expanded "><a href="../lectures/lec09_rnn.html"><strong aria-hidden="true">2.1.</strong> Recurrent Networks, LSTMS, and Applications</a></li><li class="expanded "><a href="../lectures/lec10_visual.html"><strong aria-hidden="true">2.2.</strong> Visualizing Deep Networks</a></li><li class="expanded "><a href="../lectures/lec11_attention.html"><strong aria-hidden="true">2.3.</strong> Attention Networks</a></li><li class="expanded "><a href="../lectures/lec12_text_semantics.html"><strong aria-hidden="true">2.4.</strong> Text Semantics</a></li><li class="expanded "><a href="../lectures/lec13_translation.html"><strong aria-hidden="true">2.5.</strong> Translation</a></li><li class="expanded "><a href="../lectures/lec14_transformers.html"><strong aria-hidden="true">2.6.</strong> Transformers and Pre-Training</a></li><li class="expanded "><a href="../lectures/lec15_nlp_applications.html"><strong aria-hidden="true">2.7.</strong> NLP Applications</a></li><li class="expanded "><a href="../lectures/lec16_generative_models.html"><strong aria-hidden="true">2.8.</strong> Generative Models</a></li><li class="expanded "><a href="../lectures/lec17_gan.html"><strong aria-hidden="true">2.9.</strong> Generative Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec18_adversarial_networks.html"><strong aria-hidden="true">2.10.</strong> Adversarial Networks</a></li><li class="expanded "><a href="../lectures/lec19_fairness.html"><strong aria-hidden="true">2.11.</strong> Fairness in Deep Learning</a></li><li class="expanded "><a href="../lectures/lec20_imitation_learning.html"><strong aria-hidden="true">2.12.</strong> Imitation Learning</a></li><li class="expanded "><a href="../lectures/lec21_rl_policy_gradients.html"><strong aria-hidden="true">2.13.</strong> Reinforcement Learning: Policy Gradients</a></li><li class="expanded "><a href="../lectures/lec22_deep_rl_value_based.html"><strong aria-hidden="true">2.14.</strong> Deep RL: Value-Based Methods</a></li><li class="expanded "><a href="../lectures/lect23_exploration.html"><strong aria-hidden="true">2.15.</strong> Exploration</a></li><li class="expanded "><a href="../lectures/lec24_unsupervised_learning.html" class="active"><strong aria-hidden="true">2.16.</strong> Unsupervised Learning</a></li></ol></li><li class="expanded "><a href="../other_resources/other_resources.html"><strong aria-hidden="true">3.</strong> Other Resources</a></li><li><ol class="section"><li class="expanded "><a href="../other_resources/viz_seq.html"><strong aria-hidden="true">3.1.</strong> Visualizing Seq2Seq with Attention</a></li><li class="expanded "><a href="../other_resources/viz_transformers.html"><strong aria-hidden="true">3.2.</strong> Visualizing Transformers</a></li><li class="expanded "><a href="../other_resources/viz_bert_elmo_gpt.html"><strong aria-hidden="true">3.3.</strong> Visualizing BERT, ELMo, and GPT</a></li><li class="expanded "><a href="../other_resources/review_cs188.html"><strong aria-hidden="true">3.4.</strong> Review CS 188: AI</a></li></ol></li><li class="expanded "><a href="../homework/homework.html"><strong aria-hidden="true">4.</strong> Homeworks</a></li><li><ol class="section"><li class="expanded "><a href="../homework/hw2_rnn_lstm.html"><strong aria-hidden="true">4.1.</strong> Homework 2 RNN and LSTM</a></li><li class="expanded "><a href="../homework/hw3_nlp.html"><strong aria-hidden="true">4.2.</strong> Homework 3 Natural Language Processing</a></li></ol></li><li class="expanded "><a href="../section/section.html"><strong aria-hidden="true">5.</strong> Section</a></li><li><ol class="section"><li class="expanded "><a href="../section/sect5.html"><strong aria-hidden="true">5.1.</strong> Section 5: Attention Mechanisms and Transformers</a></li><li class="expanded "><a href="../section/sect6.html"><strong aria-hidden="true">5.2.</strong> Section 6: Transformers and Pretraining in NLP</a></li><li class="expanded "><a href="../section/sect7.html"><strong aria-hidden="true">5.3.</strong> Section 7: Fooling Networks and Generative Models</a></li><li class="expanded "><a href="../section/sect8.html"><strong aria-hidden="true">5.4.</strong> Section 8: Fairness, MDP, Imitation Learning</a></li></ol></li><li class="expanded "><a href="../project/project.html"><strong aria-hidden="true">6.</strong> Final Project: Model Distillation Low Precision Neural Networks</a></li><li><ol class="section"><li class="expanded "><a href="../project/xnor-net.html"><strong aria-hidden="true">6.1.</strong> XNOR-net</a></li><li class="expanded "><a href="../project/knowledge_distill.html"><strong aria-hidden="true">6.2.</strong> Knowledge Distillation</a></li><li class="expanded "><a href="../project/dorefa_net.html"><strong aria-hidden="true">6.3.</strong> DoReFa-Net</a></li><li class="expanded "><a href="../project/apprentice_knowledge_distill.html"><strong aria-hidden="true">6.4.</strong> Apprentice: Knowledge Distillation with Low-Precision Networks</a></li><li class="expanded "><a href="../project/ta.html"><strong aria-hidden="true">6.5.</strong> Improved Knowledge Distillation via Teacher Assistant</a></li><li class="expanded "><a href="../project/ta_code.html"><strong aria-hidden="true">6.6.</strong> Teacher Assistant Code</a></li></ol></li><li class="expanded "><a href="../exam/exam.html"><strong aria-hidden="true">7.</strong> Exam Practice</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/midterm1.html"><strong aria-hidden="true">7.1.</strong> Midterm 1</a></li><li><ol class="section"><li class="expanded "><a href="../exam/midterm1/mt1sp19.html"><strong aria-hidden="true">7.1.1.</strong> Midterm 1 Spring 2019</a></li><li class="expanded "><a href="../exam/midterm1/mt1prac1sp18.html"><strong aria-hidden="true">7.1.2.</strong> Midterm 1 Practice 1 Spring 2018</a></li><li class="expanded "><a href="../exam/midterm1/cheatsheet.html"><strong aria-hidden="true">7.1.3.</strong> Midterm 1 Cheat Sheet</a></li></ol></li><li class="expanded "><a href="../exam/quiz1/quiz1.html"><strong aria-hidden="true">7.2.</strong> Take Home Quiz 1</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">CS 282: Deep Learning Notes Spring 2020</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#unsupervised-learning" id="unsupervised-learning">Unsupervised Learning</a></h1>
+<ul>
+<li>representations are really important</li>
+</ul>
+<p><img src="https://i.imgur.com/HvXC1Vk.png" alt="" /></p>
+<ul>
+<li>depth defines representations</li>
+</ul>
+<h2><a class="header" href="#deep-learning-to-learn-features" id="deep-learning-to-learn-features">Deep Learning to Learn Features</a></h2>
+<p><img src="https://i.imgur.com/BER0lFP.png" alt="" /></p>
+<ul>
+<li>aka self-supervision, create your own supervised label</li>
+</ul>
+<h2><a class="header" href="#why-self-supervised-learning" id="why-self-supervised-learning">Why Self-Supervised Learning</a></h2>
+<p><img src="https://i.imgur.com/pbGdvwv.png" alt="" /></p>
+<ul>
+<li>expensive to label data. hiring humans</li>
+<li>animals and babies can self label</li>
+</ul>
+<p><img src="https://i.imgur.com/Ckpgvxn.png" alt="" /></p>
+<h2><a class="header" href="#yann-lecuns-cake" id="yann-lecuns-cake">Yann LeCun's Cake</a></h2>
+<p><img src="https://i.imgur.com/Ckpgvxn.png" alt="" /></p>
+<ul>
+<li>Unsupervised Learning gets lost of information</li>
+</ul>
+<p><img src="https://i.imgur.com/bbA3Gzc.png" alt="" /></p>
+<h2><a class="header" href="#cognitive-principles" id="cognitive-principles">Cognitive Principles</a></h2>
+<p><img src="https://i.imgur.com/NnE9Cep.png" alt="" /></p>
+<h2><a class="header" href="#denoising-autoencoders" id="denoising-autoencoders">Denoising Autoencoders</a></h2>
+<p><img src="https://i.imgur.com/89lHV7P.png" alt="" /></p>
+<p><img src="https://i.imgur.com/WMtyJx6.png" alt="" /></p>
+<ul>
+<li>different noise
+<ul>
+<li>gaussian noise</li>
+<li>masking noise</li>
+<li>salt-and-pepper</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/SvdcEf4.png" alt="" /></p>
+<ul>
+<li>have to know window, color</li>
+</ul>
+<p><img src="https://i.imgur.com/48fu0g2.png" alt="" /></p>
+<p><img src="https://i.imgur.com/DbhzGJe.png" alt="" /></p>
+<ul>
+<li>L2 loss, blurry  being a little wrong (blurry) better than really bad in single place</li>
+</ul>
+<p><img src="https://i.imgur.com/GgAL2UN.png" alt="" /></p>
+<p><img src="https://i.imgur.com/8Uo5Vha.png" alt="" /></p>
+<ul>
+<li>doesn't do that well</li>
+</ul>
+<h2><a class="header" href="#predicting-color" id="predicting-color">Predicting Color</a></h2>
+<p><img src="https://i.imgur.com/ZiLY3RQ.png" alt="" /></p>
+<ul>
+<li>L2 regression to classification</li>
+</ul>
+<h2><a class="header" href="#split-brains" id="split-brains">Split Brains</a></h2>
+<p><img src="https://i.imgur.com/9abzeOr.png" alt="" /></p>
+<ul>
+<li>depth from RGB and RGB to depth</li>
+</ul>
+<h2><a class="header" href="#relative-position-of-image-patches" id="relative-position-of-image-patches">Relative Position of Image Patches</a></h2>
+<p><img src="https://i.imgur.com/6rTI2Pj.png" alt="" /></p>
+<p><img src="https://i.imgur.com/ytUWlOa.png" alt="" /></p>
+<ul>
+<li>relative positions</li>
+</ul>
+<h2><a class="header" href="#common-sense-reasoning" id="common-sense-reasoning">Common Sense Reasoning</a></h2>
+<h3><a class="header" href="#jigsaw-puzzles" id="jigsaw-puzzles">Jigsaw Puzzles</a></h3>
+<p><img src="https://i.imgur.com/ytUWlOa.png" alt="" /></p>
+<h3><a class="header" href="#rotation" id="rotation">Rotation</a></h3>
+<p><img src="https://i.imgur.com/Yr1oKnm.png" alt="" /></p>
+<p><img src="https://i.imgur.com/Yr1oKnm.png" alt="" /></p>
+<ul>
+<li>Getting better</li>
+</ul>
+<h2><a class="header" href="#contrastive-methods" id="contrastive-methods">Contrastive Methods</a></h2>
+<p><img src="https://i.imgur.com/56VdFKz.png" alt="" /></p>
+<ul>
+<li>like word2vec</li>
+</ul>
+<p><img src="https://i.imgur.com/YY36fbC.png" alt="" /></p>
+<h2><a class="header" href="#contrastive-predictive-coding" id="contrastive-predictive-coding">Contrastive Predictive Coding</a></h2>
+<p><img src="https://i.imgur.com/p7hPNrF.png" alt="" /></p>
+<p><img src="https://i.imgur.com/Zs5V3QI.png" alt="" /></p>
+<ul>
+<li>lots of noise but some info</li>
+<li>we want high level semantic information</li>
+</ul>
+<p><img src="https://i.imgur.com/Zs5V3QI.png" alt="" /></p>
+<ul>
+<li>classify real and fake future?</li>
+</ul>
+<p><img src="https://i.imgur.com/fDsFnac.png" alt="" /></p>
+<ul>
+<li>predict in the future</li>
+</ul>
+<p><img src="https://i.imgur.com/MnWspwt.png" alt="" /></p>
+<ul>
+<li>high level vs low level</li>
+</ul>
+<h2><a class="header" href="#cpcv2" id="cpcv2">CPCv2</a></h2>
+<p><img src="https://i.imgur.com/mPY8rzN.png" alt="" /></p>
+<p><img src="https://i.imgur.com/xepuitC.png" alt="" /></p>
+<ul>
+<li>masked</li>
+<li>patches</li>
+</ul>
+<p><img src="https://i.imgur.com/rI0X7xq.png" alt="" /></p>
+<h2><a class="header" href="#learning-via-interaction" id="learning-via-interaction">Learning via Interaction</a></h2>
+<p><img src="https://i.imgur.com/47DWfs2.png" alt="" /></p>
+<ul>
+<li>forward and inverse</li>
+</ul>
+<h2><a class="header" href="#questions" id="questions">Questions</a></h2>
+<ul>
+<li>CPCv2 what are negatives</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../lectures/lect23_exploration.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../other_resources/other_resources.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../lectures/lect23_exploration.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../other_resources/other_resources.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
