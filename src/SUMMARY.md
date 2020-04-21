@@ -1,6 +1,7 @@
 # Summary
 
 - [Introduction](introduction.md)
+
 - [Lectures](lectures/lectures.md)
     - [Recurrent Networks, LSTMS, and Applications](lectures/lec09_rnn.md)
     - [Visualizing Deep Networks](lectures/lec10_visual.md)
@@ -18,19 +19,23 @@
     - [Deep RL: Value-Based Methods](lectures/lec22_deep_rl_value_based.md)
     - [Exploration](lectures/lect23_exploration.md)
     - [Unsupervised Learning](lectures/lec24_unsupervised_learning.md)
+
 - [Other Resources](other_resources/other_resources.md)
     - [Visualizing Seq2Seq with Attention](other_resources/viz_seq.md)
     - [Visualizing Transformers](other_resources/viz_transformers.md)
     - [Visualizing BERT, ELMo, and GPT](other_resources/viz_bert_elmo_gpt.md)
     - [Review CS 188: AI](other_resources/review_cs188.md)
+
 - [Homeworks](homework/homework.md)
     - [Homework 2 RNN and LSTM](homework/hw2_rnn_lstm.md)
     - [Homework 3 Natural Language Processing](homework/hw3_nlp.md)
+
 - [Section](section/section.md)
     - [Section 5: Attention Mechanisms and Transformers](section/sect5.md)
     - [Section 6: Transformers and Pretraining in NLP](section/sect6.md)
     - [Section 7: Fooling Networks and Generative Models](section/sect7.md)
     - [Section 8: Fairness, MDP, Imitation Learning](section/sect8.md)
+
 - [Final Project: Model Distillation Low Precision Neural Networks](project/project.md)
     - [XNOR-net](project/xnor-net.md)
     - [Knowledge Distillation](project/knowledge_distill.md)
@@ -38,6 +43,8 @@
     - [Apprentice: Knowledge Distillation with Low-Precision Networks](project/apprentice_knowledge_distill.md)
     - [Improved Knowledge Distillation via Teacher Assistant](project/ta.md)
     - [Teacher Assistant Code](project/ta_code.md)
+    - [Reviewing Code Changes](project/reviewing_code_changes.md)
+
 - [Exam Practice](exam/exam.md)
     - [Midterm 1](exam/midterm1/midterm1.md)
         - [Midterm 1 Spring 2019](exam/midterm1/mt1sp19.md)
