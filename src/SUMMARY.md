@@ -35,6 +35,7 @@
     - [Section 6: Transformers and Pretraining in NLP](section/sect6.md)
     - [Section 7: Fooling Networks and Generative Models](section/sect7.md)
     - [Section 8: Fairness, MDP, Imitation Learning](section/sect8.md)
+    - [Section 9: Policy Gradient and Value-based Methods](section/sect9.md)
 
 - [Final Project: Model Distillation Low Precision Neural Networks](project/project.md)
     - [XNOR-net](project/xnor-net.md)
@@ -51,3 +52,4 @@
         - [Midterm 1 Practice 1 Spring 2018](exam/midterm1/mt1prac1sp18.md)
         - [Midterm 1 Cheat Sheet](exam/midterm1/cheatsheet.md)
     - [Take Home Quiz 1](exam/quiz1/quiz1.md)
+    - [Take Home Quiz 2](exam/quiz2/quiz2.md)
